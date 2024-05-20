@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -7,39 +7,34 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        {{-- Sidebar --}}
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
         <x-sidebar></x-sidebar>
-
-        <div class="main">
-            {{-- Navbar --}}
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <!--  Header Start -->
             <x-navbar></x-navbar>
-
-            <main class="content">
-                <div class="container-fluid p-0">
-
-                    {{-- Title --}}
-                    <x-title>{{ $title }}</x-title>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                </div>
-                            </div>
-                        </div>
+            <!--  Header End -->
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold mb-4">Sample Page</h5>
+                        <p class="mb-0">This is a sample page </p>
                     </div>
-
                 </div>
-            </main>
-
-            {{-- Footer --}}
-            <x-footer></x-footer>
+            </div>
         </div>
     </div>
-
-    {{-- Script --}}
-    <x-script></x-script>
-
+    <script src="{{ asset('template/src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('template/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('template/src/assets/js/sidebarmenu.js') }}"></script>
+    <script src="{{ asset('template/src/assets/js/app.min.js') }}"></script>
+    <script src="{{ asset('template/src/assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('template/src/assets/libs/simplebar/dist/simplebar.js') }}"></script>
+    <script src="{{ asset('template/src/assets/js/dashboard.js') }}"></script>
 </body>
 
 </html>
