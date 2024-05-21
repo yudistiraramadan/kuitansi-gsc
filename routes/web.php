@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KuitansiController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -11,6 +12,9 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
     Route::get('/dashboard', [DashboardController::class, 'dashboard', 'title'=>'Dashboard Manajemen'])->name('dashboard.manajemen');
+    
+    //Kuitansi 
+    Route::get('/kuitansi', [KuitansiController::class, 'index', 'title'=>'Daftar Kuitansi'])->name('daftar.kuitansi');
 });
 
 Route::group(['middleware' => ['auth' => 'cekrole:2']], function(){

@@ -17,5 +17,9 @@ class UserKuitansiSeeder extends Seeder
             'user_id' => '2',
             'kuitansi_id' => '1',
         ]);
+        UserKuitansi::create([
+            'user_id' => '1',
+            'kuitansi_id' => '2',
+        ]);
     }
 }

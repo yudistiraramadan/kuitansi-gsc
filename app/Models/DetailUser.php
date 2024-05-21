@@ -12,7 +12,7 @@ class DetailUser extends Model
         'user_id', 'alamat', 'phone', 'gender'
     ];
 
-    public function user(){
+    public function users(){
         return $this->belongsTo(User::class);
     }
 }

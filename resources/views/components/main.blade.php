@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card-body">
                         {{-- <h5 class="card-title fw-semibold mb-4">{{ $title }}</h5> --}}
-                        <x-title>{{ $slot }}</x-title>
+                        {{-- <x-title>{{ $title }}</x-title> --}}
                         <p class="mb-0">{{ $slot }}</p>
                     </div>
                 </div>

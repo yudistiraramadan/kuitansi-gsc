@@ -47,11 +47,11 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function detail_user(){
+    public function detail_users(){
         return $this->hasOne(DetailUser::class);
     }
 
-    public function kuitansi(){
+    public function kuitansis(){
         return $this->belongsToMany(Kuitansi::class, 'user_kuitansi');
     }
 }

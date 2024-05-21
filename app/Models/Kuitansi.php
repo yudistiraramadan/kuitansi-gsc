@@ -13,7 +13,7 @@ class Kuitansi extends Model
         'jenis_kuitansi', 'pembayaran', 'tanggal'
     ];
 
-    public function user(){
+    public function users(){
         return $this->belongsToMany(User::class, 'user_kuitansi');
     }
 }

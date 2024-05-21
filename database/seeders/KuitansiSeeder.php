@@ -22,5 +22,14 @@ class KuitansiSeeder extends Seeder
             'pembayaran' => 'Transfer',
             'tanggal' => '2024-5-21',
         ]);
+        Kuitansi::create([
+            'donatur' => 'Dimas Lahay Cihuy', 
+            'nominal' => 50000000,
+            'terbilang' => 'LIMA PULUH JUTA RUPIAH',
+            'keperluan' => 'Pembangunan Rumah Sholeh',
+            'jenis_donasi' => 'Wakaf',
+            'pembayaran' => 'Transfer',
+            'tanggal' => '2024-5-22',
+        ]);
     }
 }
