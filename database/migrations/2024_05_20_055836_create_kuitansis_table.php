@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('nominal');
             $table->string('terbilang');
             $table->string('keperluan');
-            $table->enum('jenis_kuitansi', ['Zakat', 'Tabung Kebaikan', 'Kotak Infaq', 'Wakaf', 'Sedekah', 'Donasi Kemanusiaan'])->nullable();
+            $table->enum('jenis_donasi', ['Zakat', 'Tabung Kebaikan', 'Kotak Infaq', 'Wakaf', 'Sedekah', 'Donasi Kemanusiaan'])->nullable();
             $table->enum('pembayaran', ['Tunai', 'Transfer', 'Lainnya']);
             $table->date('tanggal');
             $table->timestamps();
