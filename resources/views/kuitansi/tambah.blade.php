@@ -72,15 +72,15 @@
         }
     </script>
 
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('store.kuitansi') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-lg-6">
                 <div class="mb-3">
-                    <label for="pengaju" class="form-label">Nama Donatur</label>
-                    <input type="text" class="form-control" id="pengaju" name="pengaju" value="{{ old('pengaju') }}">
-                    <div id="pengaju" class="form-text">Nama donatur/pengaju/pembuat kuitansi</div>
-                    @error('pengaju')
+                    <label for="donatur" class="form-label">Nama Donatur</label>
+                    <input type="text" class="form-control" id="donatur" name="donatur" value="{{ old('donatur') }}">
+                    <div id="donatur" class="form-text">Terima Dari</div>
+                    @error('donatur')
                         <div class="text text-danger">
                             {{ $message }}
                         </div>
@@ -130,8 +130,8 @@
         <br><br>
         <div class="row">
             <div class="col-lg-4">
-                <label for="jenis_kuitansi" class="form-label">Jenis Donasi</label>
-                <select class="form-select" name="jenis_kuitansi" id="jenis_kuitansi">
+                <label for="jenis_donasi" class="form-label">Jenis Donasi</label>
+                <select class="form-select" name="jenis_donasi" id="jenis_donasi">
                     {{-- <option selected>Jenis Kuitansi</option> --}}
                     <option value="Zakat">Zakat</option>
                     <option value="Tabung Kebaikan">Tabung Kebaikan</option>
@@ -140,7 +140,7 @@
                     <option value="Sedekah">Sedekah</option>
                     <option value="Donasi Kemanusiaan">Donasi Kemanusiaan</option>
                 </select>
-                @error('jenis_kuitansi')
+                @error('jenis_donasi')
                     <div class="text text-danger">
                         {{ $message }}
                     </div>

@@ -15,7 +15,8 @@ Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
     
     //Kuitansi 
     Route::get('/kuitansi', [KuitansiController::class, 'index'])->name('daftar.kuitansi');
-    Route::get('/kuitansi/tambah', [KuitansiController::class, 'create'])->name('tambah.kuitansi');
+    Route::get('/kuitansi/tambah', [KuitansiController::class, 'create'])->name('create.kuitansi');
+    Route::post('/kuitansi/store', [KuitansiController::class, 'store'])->name('store.kuitansi');
 });
 
 Route::group(['middleware' => ['auth' => 'cekrole:2']], function(){
