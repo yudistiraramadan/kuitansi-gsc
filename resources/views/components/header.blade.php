@@ -4,4 +4,7 @@
     <title>Spike Free</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('template/src/assets/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('template/src/assets/css/styles.min.css') }}" />
+
+    {{-- Datatables --}}
+    <link rel="stylesheet" href="{{ asset('asset_offline/css/datatables.css') }}">
 </div>

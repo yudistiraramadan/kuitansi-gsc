@@ -58,5 +58,11 @@
             </tbody>
         </table>
     </div>
-
 </x-main>
+
+<script>
+    // $(document).ready(function() {
+    //     let table = $('#tb-kuitansi').DataTable({});
+    // });
+    let table = new DataTable('#tb-kuitansi');
+</script>
