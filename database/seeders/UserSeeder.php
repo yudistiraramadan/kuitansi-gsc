@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         User::create([
             'role_id' => '2',
             'nama' => 'Yudistira Ramadan Kalimasada',
-            'username' => 'yudistira',
+            'username' => 'petugas',
             'password' => bcrypt('tes'),
         ]);
     }

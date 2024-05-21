@@ -23,11 +23,18 @@ class AuthController extends Controller
         ],
     );
 
-    if(Auth::attempt($request->only('username', 'password'))){
-        if(Auth::user()->role_id == '1'){
-            return redirect()->route('dashboard.manajemen');
-        }elseif(Auth::user()->role_id == '2'){
-            return redirect()->route('dashboard.petugas');
+    $login = [
+        'username' => $request->username,
+        'password' => $request->password
+    ];
+    if(Auth::attempt($login)){
+        if(Auth::check()){
+            if(Auth::user()->role_id == 1){
+                return redirect()->route('dashboard.manajemen');
+            }
+            elseif(Auth::user()->role_id == 2){
+                return redirect()->route('dashboard.petugas');
+            }
         }
     }
     return redirect('/')->withErrors('Username/Password yang dimasukan salah')->withInput();
