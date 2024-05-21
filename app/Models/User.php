@@ -52,6 +52,7 @@ class User extends Authenticatable
     }
 
     public function kuitansis(){
-        return $this->belongsToMany(Kuitansi::class, 'user_kuitansi');
+        // return $this->belongsToMany(Kuitansi::class, 'user_kuitansi');
+        return $this->hasMany(Kuitansi::class);
     }
 }

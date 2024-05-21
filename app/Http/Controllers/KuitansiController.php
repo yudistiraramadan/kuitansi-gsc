@@ -10,7 +10,11 @@ use Illuminate\Http\Request;
 class KuitansiController extends Controller
 {
     public function index(){
-        $kuitansis = Kuitansi::with('users:nama')->get();
+        // $kuitansis = Kuitansi::orderBy('tanggal', 'desc')->get();
+        // $kuitansis = Kuitansi::with('users')->get();
+        $kuitansis = Kuitansi::join('users', 'kuitansis.user_id', 'users.id')
+        ->get(['kuitansis.donatur', 'kuitansis.nominal', 'kuitansis.keperluan', 'kuitansis.tanggal', 'users.nama']);
+        // dd($kuitansis);
         return view('kuitansi.lists', compact('kuitansis'), ['title' => 'Daftar Kuitansi']);
     }
 

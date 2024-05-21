@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('kuitansis', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('donatur');
             $table->bigInteger('nominal');
             $table->string('terbilang');
@@ -21,6 +22,8 @@ return new class extends Migration
             $table->enum('pembayaran', ['Tunai', 'Transfer', 'Lainnya']);
             $table->date('tanggal');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

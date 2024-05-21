@@ -2,14 +2,6 @@
     <x-slot:title>{{ $title }}</x-slot:title>
     <br>
 
-    {{-- <a href="{{ route('tambah.kuitansi') }}">
-        <div class="btn btn-primary" style="margin-bottom: 10px;">Tambah data</div>
-    </a>
-    &nbsp;
-    <a href="#">
-        <div class="btn btn-success" style="margin-bottom: 10px;">Export Excel</div>
-    </a> --}}
-
     <a href="{{ route('tambah.kuitansi') }}">
         {{-- <div class="btn btn-primary" style="margin-bottom: 10px;">Tambah data</div> --}}
         <button class="btn  btn-primary">Tambah</button>
@@ -39,13 +31,7 @@
                         <td>{{ $kuitansi->donatur }}</td>
                         <td>Rp. {{ number_format($kuitansi->nominal, 0, ',', '.') }}</td>
                         <td>{{ $kuitansi->keperluan }}</td>
-                        <td>
-                            <ul>
-                                @foreach ($kuitansi->users as $user)
-                                    <li>{{ $user->nama }}</li>
-                                @endforeach
-                            </ul>
-                        </td>
+                        <td>{{ $kuitansi->nama }}</td>
                         <td>{{ \Carbon\Carbon::parse($kuitansi->tanggal)->locale('id')->isoFormat('D MMMM Y') }}
                         </td>
                         <td>

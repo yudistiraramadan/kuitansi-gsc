@@ -14,15 +14,17 @@ class KuitansiSeeder extends Seeder
     public function run(): void
     {
         Kuitansi::create([
+            'user_id' => 2,
             'donatur' => 'Dimas Chandra Efansa', 
             'nominal' => 12000000,
             'terbilang' => 'DUA BELAS JUTA RUPIAH',
             'keperluan' => 'Bantuan Banjir Nusawungu',
             'jenis_donasi' => 'Sedekah',
             'pembayaran' => 'Transfer',
-            'tanggal' => '2024-5-21',
+            'tanggal' => '2024-5-20',
         ]);
         Kuitansi::create([
+            'user_id' => 1,
             'donatur' => 'Dimas Lahay Cihuy', 
             'nominal' => 50000000,
             'terbilang' => 'LIMA PULUH JUTA RUPIAH',

@@ -11,7 +11,7 @@ Route::post('/post-login', [AuthController::class, 'postlogin'])->name('postlogi
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');   
 
 Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
-    Route::get('/dashboard', [DashboardController::class, 'dashboard', 'title'=>'Dashboard Manajemen'])->name('dashboard.manajemen');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.manajemen');
     
     //Kuitansi 
     Route::get('/kuitansi', [KuitansiController::class, 'index'])->name('daftar.kuitansi');
@@ -19,5 +19,5 @@ Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
 });
 
 Route::group(['middleware' => ['auth' => 'cekrole:2']], function(){
-    Route::get('/dashboard-petugas', [DashboardController::class, 'dashboard_petugas', 'title' => 'Dashboard Petugas'])->name('dashboard.petugas');
+    Route::get('/dashboard-petugas', [DashboardController::class, 'dashboard_petugas'])->name('dashboard.petugas');
 });
