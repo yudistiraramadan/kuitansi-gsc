@@ -11,6 +11,10 @@ class KuitansiController extends Controller
 {
     public function index(){
         $kuitansis = Kuitansi::with('users:nama')->get();
-        return view('kuitansi.lists', compact('kuitansis'));
+        return view('kuitansi.lists', compact('kuitansis'), ['title' => 'Daftar Kuitansi']);
+    }
+
+    public function create(){
+        return view('kuitansi.tambah', ['title'=>'Tambah Kuitansi']);
     }
 }

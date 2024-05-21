@@ -1,21 +1,19 @@
 <x-main>
-    {{-- <x-slot:title>{{ $title }}</x-slot:title> --}}
-    <div>
-        <h1 style="font-family:'Nunito'; font-weight:700; color:#222E3C; font-size:24px;" class="h3 mb-3">
-            Daftar Kuitansi
-        </h1>
-    </div>
-
+    <x-slot:title>{{ $title }}</x-slot:title>
     <br>
 
-    <a href="/tambah-kuitansi">
+    {{-- <a href="{{ route('tambah.kuitansi') }}">
         <div class="btn btn-primary" style="margin-bottom: 10px;">Tambah data</div>
     </a>
     &nbsp;
     <a href="#">
         <div class="btn btn-success" style="margin-bottom: 10px;">Export Excel</div>
-    </a>
+    </a> --}}
 
+    <a href="{{ route('tambah.kuitansi') }}">
+        {{-- <div class="btn btn-primary" style="margin-bottom: 10px;">Tambah data</div> --}}
+        <button class="btn  btn-primary">Tambah</button>
+    </a>
 
     <div class="table-responsive">
         <table class="table table-bordered table-hover" id="tb-kuitansi">
@@ -51,7 +49,15 @@
                         <td>{{ \Carbon\Carbon::parse($kuitansi->tanggal)->locale('id')->isoFormat('D MMMM Y') }}
                         </td>
                         <td>
-                            <button class="btn btn-danger">Hapus</button>
+                            <button class="btn btn-sm btn-danger">
+                                <i class="ti ti-trash"></i>
+                            </button>&nbsp;
+                            <button class="btn btn-sm btn-warning">
+                                <i class="ti ti-home"></i>
+                            </button>&nbsp;
+                            <button class="btn btn-sm btn-primary">
+                                <i class="ti ti-edit"></i>
+                            </button>
                         </td>
                     </tr>
                 @endforeach
