@@ -101,5 +101,11 @@ class KuitansiController extends Controller
             return redirect()->route('daftar.kuitansi')->with('success','Kuitansi berhasil diedit');
     }
 
+    public function delete(Request $request, $id){
+        $kuitansi = Kuitansi::find($request->$id);
+        $kuitansi->delete();
+        return redirect()->route('daftar.kuitansi');
+    }
+
     
 }
