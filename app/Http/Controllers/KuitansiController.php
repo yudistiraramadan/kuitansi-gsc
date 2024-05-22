@@ -24,7 +24,6 @@ class KuitansiController extends Controller
         ->orderBy('kuitansis.tanggal', 'desc')
         ->get(['kuitansis.id', 'kuitansis.user_id', 'kuitansis.donatur', 'kuitansis.nominal', 'kuitansis.keperluan', 'kuitansis.tanggal', 'users.nama']);
         return view('kuitansi.petugas', compact('kuitansis'), ['title' => 'Daftar Kuitansi']);
-        // dd($kuitansis);
     }
 
     public function create(){
