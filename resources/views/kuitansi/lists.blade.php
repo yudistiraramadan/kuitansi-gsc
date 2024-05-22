@@ -4,11 +4,11 @@
 
     <a href="{{ route('create.kuitansi') }}">
         {{-- <div class="btn btn-primary" style="margin-bottom: 10px;">Tambah data</div> --}}
-        <button class="btn  btn-primary">Tambah</button>
+        <button class="btn btn-primary">Tambah</button>
     </a>
 
     <div class="table-responsive">
-        <table class="table table-bordered table-hover" id="tb-kuitansi">
+        <table class="table table-hover table-bordered" id="tb-kuitansi">
             <thead>
                 <tr>
                     <th scope="col" style="text-align:left;">No.</th>
@@ -27,7 +27,7 @@
 
                 @foreach ($kuitansis as $kuitansi)
                     <tr>
-                        <td>{{ $no++ }}</td>
+                        <td style="text-align: left;">{{ $no++ }}.</td>
                         <td>{{ $kuitansi->donatur }}</td>
                         <td>Rp. {{ number_format($kuitansi->nominal, 0, ',', '.') }}</td>
                         <td>{{ $kuitansi->keperluan }}</td>
@@ -38,11 +38,12 @@
                             <button class="btn btn-sm btn-danger">
                                 <i class="ti ti-trash"></i>
                             </button>&nbsp;
-                            <button class="btn btn-sm btn-warning">
-                                <i class="ti ti-home"></i>
-                            </button>&nbsp;
-                            <button class="btn btn-sm btn-primary">
+                            <a href="{{ route('edit.kuitansi', $kuitansi->id) }}" class="btn btn-sm btn-warning">
                                 <i class="ti ti-edit"></i>
+
+                            </a>&nbsp;
+                            <button class="btn btn-sm btn-primary">
+                                <i class="ti ti-home"></i>
                             </button>
                         </td>
                     </tr>

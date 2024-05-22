@@ -17,6 +17,8 @@ Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
     Route::get('/kuitansi', [KuitansiController::class, 'index'])->name('daftar.kuitansi');
     Route::get('/kuitansi/tambah', [KuitansiController::class, 'create'])->name('create.kuitansi');
     Route::post('/kuitansi/store', [KuitansiController::class, 'store'])->name('store.kuitansi');
+    Route::get('/kuitansi/edit/{id}', [KuitansiController::class, 'edit'])->name('edit.kuitansi');
+    Route::post('/kuitansi/update/{id}', [KuitansiController::class, 'update'])->name('update.kuitansi');
 });
 
 Route::group(['middleware' => ['auth' => 'cekrole:2']], function(){
