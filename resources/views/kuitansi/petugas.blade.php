@@ -1,14 +1,8 @@
 <x-main>
     <x-slot:title>{{ $title }}</x-slot:title>
-    {{-- <br> --}}
-
-    <a href="{{ route('create.kuitansi') }}">
-        <button class="btn btn-primary mb-2">Tambah</button>
-    </a>&nbsp;&nbsp;
     <a href="#">
-        <button class="btn btn-success mb-2">Excel</button>
+        <button class="btn btn-primary mb-2">Tambah</button>
     </a>
-
     <div class="table-responsive">
         <table class="table table-hover table-bordered" id="tb-kuitansi">
             <thead>
@@ -104,49 +98,3 @@
         });
     </script>
 @endif
-
-<script>
-    $(document).on('click', '.delete-kuitansi', function() {
-        id = $(this).data('id');
-        Swal.fire({
-            title: 'Hapus Kuitansi?',
-            text: "Apakah anda yakin ingin menghapus kuitansi!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#54ca68',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya Hapus',
-            cancelButtonText: 'Tidak'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    async: true,
-                    type: 'POST',
-                    url: '/kuitansi/delete/id',
-                    data: {
-                        id: id
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    beforeSend: function() {
-                        $('#ok_button').text('Hapus Kuitansi');
-                    },
-                    success: function(data) {
-                        setTimeout(function() {
-                            $('#confirmModal').modal('hide');
-                            location.reload();
-                        }, 3000);
-
-                        window.setTimeout(function() {}, 1000);
-                        Swal.fire(
-                            'Dihapus!',
-                            'Kuitansi berhasil dihapus.',
-                            'success'
-                        )
-                    }
-                })
-            }
-        });
-    });
-</script>

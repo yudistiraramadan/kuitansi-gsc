@@ -17,6 +17,16 @@ class KuitansiController extends Controller
         return view('kuitansi.lists', compact('kuitansis'), ['title' => 'Daftar Kuitansi']);
     }
 
+    public function kuitansi_petugas(){
+        $id = Auth::user()->id;
+        $kuitansis = Kuitansi::join('users', 'kuitansis.user_id', 'users.id')
+        ->where('kuitansis.user_id', $id)
+        ->orderBy('kuitansis.tanggal', 'desc')
+        ->get(['kuitansis.id', 'kuitansis.user_id', 'kuitansis.donatur', 'kuitansis.nominal', 'kuitansis.keperluan', 'kuitansis.tanggal', 'users.nama']);
+        return view('kuitansi.petugas', compact('kuitansis'), ['title' => 'Daftar Kuitansi']);
+        // dd($kuitansis);
+    }
+
     public function create(){
         return view('kuitansi.tambah', ['title'=>'Tambah Kuitansi']);
     }
@@ -89,7 +99,6 @@ class KuitansiController extends Controller
             $nominal = str_replace('.', '', $request->nominal);
         
             $kuitansi->update([
-                'user_id' => Auth::user()->id,
                 'donatur' => $request -> donatur,
                 'nominal' => $nominal,
                 'terbilang' => $request -> terbilang,
@@ -107,5 +116,4 @@ class KuitansiController extends Controller
         return redirect()->route('daftar.kuitansi');
     }
 
-    
 }

@@ -33,5 +33,15 @@ class KuitansiSeeder extends Seeder
             'pembayaran' => 'Transfer',
             'tanggal' => '2024-5-22',
         ]);
+        Kuitansi::create([
+            'user_id' => 2,
+            'donatur' => 'Muhammad Rizky Lalu', 
+            'nominal' => 5000000,
+            'terbilang' => 'LIMA JUTA RUPIAH',
+            'keperluan' => 'Zakat Fitrah',
+            'jenis_donasi' => 'Zakat',
+            'pembayaran' => 'Transfer',
+            'tanggal' => '2024-5-23',
+        ]);
     }
 }

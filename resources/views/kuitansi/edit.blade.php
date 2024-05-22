@@ -177,7 +177,7 @@
         <br>
         {{-- <button type="reset" class="btn btn-md btn-warning">Reset</button> --}}
         <a href="{{ route('daftar.kuitansi') }}">
-            <button type="button" class="btn btn-warning">Kembali</button>
+            <button type="button" class="btn btn-warning text-white">Kembali</button>
         </a>&nbsp;
         <button type="submit" class="btn btn-md btn-success me-3">Edit</button>
     </form>

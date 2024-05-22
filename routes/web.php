@@ -24,4 +24,5 @@ Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
 
 Route::group(['middleware' => ['auth' => 'cekrole:2']], function(){
     Route::get('/dashboard-petugas', [DashboardController::class, 'dashboard_petugas'])->name('dashboard.petugas');
+    Route::get('/kuitansi/petugas', [KuitansiController::class, 'kuitansi_petugas'])->name('kuitansi.petugas');
 });
