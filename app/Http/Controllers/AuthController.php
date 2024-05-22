@@ -30,14 +30,16 @@ class AuthController extends Controller
     if(Auth::attempt($login)){
         if(Auth::check()){
             if(Auth::user()->role_id == 1){
-                return redirect()->route('dashboard.manajemen');
+                $nama = Auth::user()->nama;
+                return redirect()->route('dashboard.manajemen')->with('success', 'Selamat Datang \n'. $nama);
             }
             elseif(Auth::user()->role_id == 2){
-                return redirect()->route('dashboard.petugas');
+                $nama = Auth::user()->nama;
+                return redirect()->route('dashboard.petugas')->with('success','Selamat Datang \n'. $nama);
             }
         }
     }
-    return redirect('/')->withErrors('Username/Password yang dimasukan salah')->withInput();
+    return redirect('/')->with('error', 'Username/password yang dimasukan salah!');
 }
 
     public function logout(){

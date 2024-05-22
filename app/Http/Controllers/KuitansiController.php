@@ -98,7 +98,7 @@ class KuitansiController extends Controller
                 'pembayaran' => $request -> pembayaran,
                 'tanggal' => $request -> tanggal,
             ]);
-            return redirect()->route('daftar.kuitansi')->with('success','Kuitansi berhasil diedit   ');
+            return redirect()->route('daftar.kuitansi')->with('success','Kuitansi berhasil diedit');
     }
 
     

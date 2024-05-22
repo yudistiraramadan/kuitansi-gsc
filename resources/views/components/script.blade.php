@@ -10,5 +10,6 @@
 
     <script src="{{ asset('asset_offline/js/datatables.js') }}"></script>
     <script src="{{ asset('asset_offline/js/jquery.js') }}"></script>
-    {{-- <script src="{{ asset('asset_offline/js/toastr.js') }}"></script> --}}
+
+
 </div>
