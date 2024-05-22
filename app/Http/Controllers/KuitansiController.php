@@ -64,7 +64,12 @@ class KuitansiController extends Controller
                 'pembayaran' => $request -> pembayaran,
                 'tanggal' => $request -> tanggal,
             ]);
-            return redirect()->route('daftar.kuitansi')->with('success','Kuitansi berhasil ditambahkan');
+            if (Auth::user()->role_id == 1) {
+                return redirect()->route('daftar.kuitansi')->with('success','Kuitansi berhasil ditambahkan');
+            }else{
+                return redirect()->route('kuitansi.petugas')->with('success','Kuitansi berhasil ditambahkan');
+            }
+            // return redirect()->route('daftar.kuitansi')->with('success','Kuitansi berhasil ditambahkan');
     }
 
     public function edit($id){

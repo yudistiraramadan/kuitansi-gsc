@@ -172,9 +172,17 @@
         </div>
         <br>
         {{-- <button type="reset" class="btn btn-md btn-warning">Reset</button> --}}
-        <a href="{{ route('daftar.kuitansi') }}">
-            <button type="button" class="btn btn-warning text-white">Kembali</button>
-        </a>&nbsp;
+        @if (Auth::user()->role_id == 1)
+            <a href="{{ route('daftar.kuitansi') }}">
+                <button type="button" class="btn btn-warning text-white">Kembali</button>
+            </a>&nbsp;
+        @endif
+        @if (Auth::user()->role_id == 2)
+            <a href="{{ route('kuitansi.petugas') }}">
+                <button type="button" class="btn btn-warning text-white">Kembali</button>
+            </a>&nbsp;
+        @endif
+
         <button type="submit" class="btn btn-md btn-success me-3">Simpan</button>
     </form>
 </x-main>
