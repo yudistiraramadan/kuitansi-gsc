@@ -123,10 +123,10 @@
                 <label for="" class="form-label">Hak Akses :</label>
                 <div class="col-6">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="role_id" id="manajer" value="1"
+                        <input class="form-check-input" type="radio" name="role_id" id="manajemen" value="1"
                             {{ old('role_id') == '1' ? 'checked' : '' }}>
-                        <label class="form-check-label" for="manajer">
-                            Manajer
+                        <label class="form-check-label" for="manajemen">
+                            Manajemen
                         </label>
                     </div>
                 </div>

@@ -59,7 +59,7 @@ class UserController extends Controller
             $users->username = $data['username'];
             $users->password =  Hash::make($data['password']);
             $users->save();
-            
+
             $detail_users = new DetailUser;
             $detail_users->user_id = $users->id;
             $detail_users->alamat = $request['alamat'];
@@ -67,6 +67,6 @@ class UserController extends Controller
             $detail_users->gender = $request['gender'];
             $detail_users->save();
 
-            return redirect()->route('daftar.kuitansi')->with('success', 'User berhasil ditambahkan');
+            return redirect()->route('daftar.user')->with('success', 'User berhasil ditambahkan');
     }
 }
