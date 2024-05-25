@@ -25,6 +25,8 @@ Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
 
     // User
     Route::get('/user', [UserController::class, 'index'])->name('daftar.user');
+    Route::get('/user/tambah', [UserController::class, 'create'])->name(('create.user'));
+    Route::post('/user/store', [UserController::class, 'store'])->name('store.user');
 });
 
 Route::group(['middleware' => ['auth' => 'cekrole:1,2']], function(){

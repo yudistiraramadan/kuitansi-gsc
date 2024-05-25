@@ -2,7 +2,7 @@
     <x-slot:title>{{ $title }}</x-slot:title>
     {{-- <br> --}}
 
-    <a href="#">
+    <a href="{{ route('create.user') }}">
         <button class="btn btn-primary mb-2">Tambah</button>
     </a>&nbsp;&nbsp;
     <a href="#">
