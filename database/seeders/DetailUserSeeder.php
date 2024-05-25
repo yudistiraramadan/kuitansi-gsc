@@ -25,5 +25,11 @@ class DetailUserSeeder extends Seeder
             'phone' => '085228409840',
             'gender' => 'Laki-laki',
         ]);
+        DetailUser::create([
+            'user_id' => '3',
+            'alamat' => 'Jalan Lombok Gang Simping Cilacap Tengah',
+            'phone' => '085642145239',
+            'gender' => 'Laki-laki',
+        ]);
     }
 }

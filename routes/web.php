@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KuitansiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,6 +20,9 @@ Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
     Route::post('/kuitansi/update/{id}', [KuitansiController::class, 'update'])->name('update.kuitansi');
     Route::post('/kuitansi/delete/{id}', [KuitansiController::class, 'delete'])->name('delete.kuitansi');
     Route::get('/kuitansi/print/{id}', [KuitansiController::class, 'print'])->name('print.kuitansi');
+
+    // User
+    Route::get('/user', [UserController::class, 'index'])->name('daftar.user');
 });
 
 Route::group(['middleware' => ['auth' => 'cekrole:1,2']], function(){
