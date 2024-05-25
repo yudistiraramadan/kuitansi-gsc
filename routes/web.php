@@ -20,6 +20,8 @@ Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
     Route::post('/kuitansi/update/{id}', [KuitansiController::class, 'update'])->name('update.kuitansi');
     Route::post('/kuitansi/delete/{id}', [KuitansiController::class, 'delete'])->name('delete.kuitansi');
     Route::get('/kuitansi/print/{id}', [KuitansiController::class, 'print'])->name('print.kuitansi');
+    Route::get('/kuitansi/excel', [KuitansiController::class, 'excel'])->name('excel.kuitansi');
+
 
     // User
     Route::get('/user', [UserController::class, 'index'])->name('daftar.user');

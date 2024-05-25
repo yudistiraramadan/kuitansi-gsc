@@ -5,7 +5,7 @@
     <a href="{{ route('create.kuitansi') }}">
         <button class="btn btn-primary mb-2">Tambah</button>
     </a>&nbsp;&nbsp;
-    <a href="#">
+    <a href="{{ route('excel.kuitansi') }}">
         <button class="btn btn-success mb-2">Excel</button>
     </a>
 

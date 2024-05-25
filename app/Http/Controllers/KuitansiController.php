@@ -6,9 +6,11 @@ use App\Models\User;
 use App\Models\Kuitansi;
 use App\Models\UserKuitansi;
 use Illuminate\Http\Request;
+use App\Exports\KuitansiExcel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KuitansiController extends Controller
 {
@@ -123,16 +125,14 @@ class KuitansiController extends Controller
     }
 
     public function print(Request $request){
-        // $pdf = Pdf::loadView('kuitansi.tes');
         $kuitansi = Kuitansi::find($request->id);
         $pdf = Pdf::loadView('kuitansi.print', compact('kuitansi'));
         $pdf->setPaper('A4', 'landscape');
         return $pdf->download('e-kuitansi.pdf');
-        
-        // dd($kuitansi);
-        // $pdf = App::make('dompdf.wrapper');
-        // $pdf->loadHTML('<h1>Test</h1>');
-        // return $pdf->stream();
+    }
+
+    public function excel(){
+        return Excel::download(new KuitansiExcel, 'kuitansi.xlsx');
     }
 
 }
