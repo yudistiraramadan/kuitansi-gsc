@@ -30,6 +30,7 @@
             <p>Note : Berikut daftar kuitansi yang telah dibuat oleh petugas</p>
         </div>
     @endif
+
     <a href="{{ route('create.kuitansi') }}">
         <button class="btn btn-primary mb-2">Tambah</button>
     </a>&nbsp;&nbsp;

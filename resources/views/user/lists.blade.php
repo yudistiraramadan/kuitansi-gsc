@@ -57,9 +57,9 @@
                         <td>{{ $user->phone }}</td>
                         <td style="text-align:center;">
                             @if ($user->role_id == 1)
-                                <span class="badge text-bg-primary">manajemen</span>
+                                <span class="mb-1 badge  bg-primary-subtle text-primary">manajemen</span>
                             @elseif ($user->role_id == 2)
-                                <span class="badge text-bg-success">petugas</span>
+                                <span class="mb-1 badge  bg-success-subtle text-success">petugas</span>
                             @endif
                         </td>
                         <td>
