@@ -24,6 +24,6 @@ class CekRole
         if(in_array($request->user()->role_id, $role)){
             return $next($request);
         }
-        return redirect('loginpage')->with('error', 'kocakk');
+        return redirect('loginpage')->with('error', 'User tidak terdaftar!!');
     }
 }

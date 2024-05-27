@@ -37,5 +37,9 @@ Route::group(['middleware' => ['auth' => 'cekrole:1,2']], function(){
 Route::group(['middleware' => ['auth' => 'cekrole:2']], function(){
     Route::get('/dashboard-petugas', [DashboardController::class, 'dashboard_petugas'])->name('dashboard.petugas');
     Route::get('/kuitansi/petugas', [KuitansiController::class, 'kuitansi_petugas'])->name('kuitansi.petugas');
+    Route::get('/kuitansi/petugas/print/{id}', [KuitansiController::class, 'print_thermal'])->name('print.thermal');
+    Route::get('/petugas-tes', function(){
+        return view('kuitansi.thermal');
+    });
     
 });

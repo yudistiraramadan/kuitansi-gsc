@@ -27,7 +27,7 @@ class KuitansiController extends Controller
         ->where('kuitansis.user_id', $id)
         ->orderBy('kuitansis.tanggal', 'desc')
         ->get(['kuitansis.id', 'kuitansis.user_id', 'kuitansis.donatur', 'kuitansis.nominal', 'kuitansis.keperluan', 'kuitansis.tanggal', 'users.nama']);
-        return view('kuitansi.petugas', compact('kuitansis'), ['title' => 'Daftar Kuitansi']);
+        return view('kuitansi.lists', compact('kuitansis'), ['title' => 'Daftar Kuitansi']);
     }
 
     public function create(){
@@ -133,6 +133,13 @@ class KuitansiController extends Controller
 
     public function excel(){
         return Excel::download(new KuitansiExcel, 'kuitansi.xlsx');
+    }
+
+    public function print_thermal($id){
+        $kuitansi = Kuitansi::findOrFail($id);
+        // $pdf = PDF::loadView('kuitansi.thermal', compact('kuitansi'))->setPaper([0, 0, 226.77, 841.89]); // 58mm x 297mm
+        $pdf = PDF::loadView('kuitansi.thermal', compact('kuitansi'))->setPaper([0, 0, 453.54, 1683.78]); // 116mm x 594mm
+        return $pdf->stream('kuitansi.pdf');
     }
 
 }
