@@ -1,6 +1,29 @@
 <x-main>
     <x-slot:title>{{ $title }}</x-slot:title>
-    {{-- <br> --}}
+    <style>
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+            white-space: nowrap;
+            /* Mencegah teks memecah menjadi beberapa baris */
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
 
     <a href="{{ route('create.user') }}">
         <button class="btn btn-primary mb-2">Tambah</button>
@@ -9,7 +32,7 @@
         <button class="btn btn-success mb-2">Excel</button>
     </a>
 
-    <div class="table-responsive">
+    <div class="table-responsive table-container">
         <table class="table table-hover table-bordered" id="tb-kuitansi">
             <thead>
                 <tr>

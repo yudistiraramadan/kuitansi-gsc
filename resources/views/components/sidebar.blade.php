@@ -4,7 +4,7 @@
         <div class="scroll-sidebar" data-simplebar>
             <div class="d-flex mb-4 align-items-center justify-content-between">
                 <a href="index.html" class="text-nowrap logo-img ms-0 ms-md-1">
-                    <img src="{{ asset('template/src/assets/images/logos/dark-logo.svg') }}" width="180" alt="">
+                    <img src="{{ asset('asset_offline/img/logo-kuitansi.svg') }}" width="180" alt="">
                 </a>
                 <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                     <i class="ti ti-x fs-8"></i>
@@ -16,7 +16,7 @@
                     <ul id="sidebarnav" class="mb-4 pb-2">
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
-                            <span class="hide-menu">Home</span>
+                            <span class="hide-menu">Beranda</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link sidebar-link primary-hover-bg"
@@ -29,7 +29,7 @@
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
-                            <span class="hide-menu">UI Componenst</span>
+                            <span class="hide-menu">Menu Utama</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link sidebar-link warning-hover-bg" href="{{ route('daftar.kuitansi') }}"
@@ -56,7 +56,7 @@
                     <ul id="sidebarnav" class="mb-4 pb-2">
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
-                            <span class="hide-menu">Home</span>
+                            <span class="hide-menu">Beranda</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link sidebar-link primary-hover-bg"
@@ -69,7 +69,7 @@
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
-                            <span class="hide-menu">UI Componenst</span>
+                            <span class="hide-menu">Menu Utama</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link sidebar-link warning-hover-bg" href="{{ route('kuitansi.petugas') }}"
