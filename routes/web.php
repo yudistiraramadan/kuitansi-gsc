@@ -28,6 +28,8 @@ Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
     Route::get('/user/tambah', [UserController::class, 'create'])->name(('create.user'));
     Route::post('/user/store', [UserController::class, 'store'])->name('store.user');
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('edit.user');
+    Route::post('/user/update/{id}', [UserController::class, 'update'])->name('update.user');
+    Route::post('user/update/password/{id}', [UserController::class, 'update_password'])->name('update.password');
 });
 
 Route::group(['middleware' => ['auth' => 'cekrole:1,2']], function(){

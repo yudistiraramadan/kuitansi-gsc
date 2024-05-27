@@ -1,7 +1,7 @@
 <x-main>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <form action="{{ route('store.user') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('update.user', $user->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-lg-6">
@@ -131,30 +131,34 @@
                 Edit Password
             </h1>
         </div>
-        <div class="col-lg-6">
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" value="">
-                @error('password')
-                    <div class="text text-danger">
-                        {{ $message }}
+        <form action="{{ route('update.password', $user->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="col-lg-12">
+                <div class="col-lg-6">
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" value="">
+                        @error('password')
+                            <div class="text text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
-                @enderror
-            </div>
-            <button type="submit" class="btn btn-md btn-danger me-3">Edit Passwords</button>
-        </div>
-        <div class="col-lg-6">
-            <div class="mb-3">
-                <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
-                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
-                    value="">
-                @error('password_confirmation')
-                    <div class="text text-danger">
-                        {{ $message }}
+                </div>
+                <div class="col-lg-6">
+                    <div class="mb-3">
+                        <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
+                        <input type="password" class="form-control" id="password_confirmation"
+                            name="password_confirmation" value="">
+                        @error('password_confirmation')
+                            <div class="text text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
-                @enderror
+                </div>
+                <button type="submit" class="btn btn-md btn-danger me-3">Edit Passwords</button>
             </div>
-        </div>
-
+        </form>
     </div>
 </x-main>

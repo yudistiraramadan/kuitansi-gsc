@@ -77,4 +77,60 @@ class UserController extends Controller
         ->find($id);
         return view('user.edit', compact('user'), ['title'=>'Edit User']);
     }
+
+    public function update(Request $request, $id){
+        $request->validate(
+            [
+                'role_id' => 'required',
+                'nama' => 'required',
+                'username' => 'required',
+                'phone' => 'required|numeric',
+                'foto' => 'mimes:png,jpg,JPEG|max:2048',
+                'alamat' => 'required',
+                'gender' => 'required',
+            ],
+            [
+                'role_id.required' => 'Tipe user masih kosong',
+                'nama.required' => 'Nama user masih kosong',
+                'username.required' => 'Username masih kosong',
+                'foto.mimes' => 'Format foto harus bertipe: png,jpg,JPEG. Dan ukuran maksimal 2MB',
+                'alamat.required' => 'Alamat masih kosong',
+                'gender.required' => 'Jenis kelamin masih kosong',
+            ]
+            );
+            $user = User::findOrFail($id);
+            $user->role_id = $request->role_id;
+            $user->nama = $request->nama;
+            $user->username = $request->username;
+            $user->save();
+
+            $detail_user = DetailUser::findOrFail($id);
+            $detail_user->alamat = $request->alamat;
+            $detail_user->phone = $request->phone;
+            $detail_user->gender = $request->gender;
+            $detail_user->save();
+
+            return redirect()->route('daftar.user')->with('success', 'Data user berhasil diedit!');        
+    }
+
+    public function update_password(Request $request, $id){
+        $request->validate(
+            [
+                'password' => 'required|min:8',
+                'password_confirmation' => 'required|same:password',
+            ],
+            [
+                'password.required' => 'Password masih kosong.',
+                'password.min' => 'Password harus terdiri dari minimal 8 karakter.',
+                'password_confirmation.required' => 'Password konfirmasi masih kosong',
+                'password_confirmation.same' => 'Password tidak sama',
+            ]
+        );
+        $user = User::findOrFail($id);
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->route('daftar.user')->with('success', 'Password user berhasil diubah!');
+
+        
+    }
 }

@@ -35,7 +35,7 @@
                             <a class="sidebar-link sidebar-link warning-hover-bg" href="{{ route('daftar.kuitansi') }}"
                                 aria-expanded="false">
                                 <span class="aside-icon p-2 bg-light-warning rounded-3">
-                                    <i class="ti ti-article fs-7 text-warning"></i>
+                                    <i class="ti ti-receipt fs-7 text-warning"></i>
                                 </span>
                                 <span class="hide-menu ms-2 ps-1">Kuitansi</span>
                             </a>
@@ -44,7 +44,7 @@
                             <a class="sidebar-link sidebar-link success-hover-bg" href="{{ route('daftar.user') }}"
                                 aria-expanded="false">
                                 <span class="aside-icon p-2 bg-light-success rounded-3">
-                                    <i class="ti ti-alert-circle fs-7 text-success"></i>
+                                    <i class="ti ti-user fs-7 text-success"></i>
                                 </span>
                                 <span class="hide-menu ms-2 ps-1">User</span>
                             </a>
