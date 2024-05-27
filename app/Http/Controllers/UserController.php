@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetailUser;
+use App\Models\Kuitansi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -130,7 +131,11 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
         return redirect()->route('daftar.user')->with('success', 'Password user berhasil diubah!');
+    }
 
-        
+    public function delete(Request $request, $id){
+        $user = User::find($request->id);
+        $user->delete();
+        return redirect()->route('daftar.user');
     }
 }

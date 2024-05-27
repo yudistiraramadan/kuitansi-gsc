@@ -50,7 +50,7 @@
                                             fill="#FFC94A"></path>
                                     </svg>
                                 </a>&nbsp;&nbsp;
-                                <a href="javascript:void(0)" data-id="{{ $user->id }}" class="delete-kuitansi"
+                                <a href="javascript:void(0)" data-id="{{ $user->id }}" class="delete-user"
                                     name="delete" data-toggle="tooltip" data-placement="top" title="Hapus"
                                     data-id="4" data-original-title="Hapus"><svg width="22" height="22"
                                         viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,21 +60,6 @@
                                         </path>
                                     </svg>
                                 </a>&nbsp;&nbsp;
-                                {{-- <a href="#" data-id="" class="print-kuitansi" name="print"
-                                    data-toggle="tooltip" data-placement="top" title="Print" data-id="4"
-                                    data-original-title="Print">
-                                    <svg width="22" height="22" fill="#03AED2"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#03AED2">
-                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
-                                        </g>
-                                        <g id="SVGRepo_iconCarrier">
-                                            <path
-                                                d="M19,12h3v8a2,2,0,0,1-2,2H19ZM17,4V22H4a2,2,0,0,1-2-2V4A2,2,0,0,1,4,2H15A2,2,0,0,1,17,4ZM10,16H5v2h5Zm4-5H5v2h9Zm0-5H5V8h9Z">
-                                            </path>
-                                        </g>
-                                    </svg>
-                                </a>&nbsp;&nbsp; --}}
                                 <a href="#" data-id="" class="print-kuitansi" name="print"
                                     data-toggle="tooltip" data-placement="top" title="Detail" data-id="4"
                                     data-original-title="Detail">
@@ -134,12 +119,12 @@
     </script>
 @endif
 
-{{-- <script>
-    $(document).on('click', '.delete-kuitansi', function() {
+<script>
+    $(document).on('click', '.delete-user', function() {
         id = $(this).data('id');
         Swal.fire({
-            title: 'Hapus Kuitansi?',
-            text: "Apakah anda yakin ingin menghapus kuitansi!",
+            title: 'Hapus user?',
+            text: "Apakah anda yakin ingin menghapus user!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#54ca68',
@@ -151,7 +136,7 @@
                 $.ajax({
                     async: true,
                     type: 'POST',
-                    url: '/kuitansi/delete/id',
+                    url: '/user/delete/id',
                     data: {
                         id: id
                     },
@@ -159,7 +144,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     beforeSend: function() {
-                        $('#ok_button').text('Hapus Kuitansi');
+                        $('#ok_button').text('Hapus user');
                     },
                     success: function(data) {
                         setTimeout(function() {
@@ -170,7 +155,7 @@
                         window.setTimeout(function() {}, 1000);
                         Swal.fire(
                             'Dihapus!',
-                            'Kuitansi berhasil dihapus.',
+                            'Data user berhasil dihapus.',
                             'success'
                         )
                     }
@@ -178,4 +163,4 @@
             }
         });
     });
-</script> --}}
+</script>

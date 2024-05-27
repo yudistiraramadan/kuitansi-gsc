@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('edit.user');
     Route::post('/user/update/{id}', [UserController::class, 'update'])->name('update.user');
     Route::post('user/update/password/{id}', [UserController::class, 'update_password'])->name('update.password');
+    Route::post('user/delete/{id}', [UserController::class, 'delete'])->name('delete.user');
 });
 
 Route::group(['middleware' => ['auth' => 'cekrole:1,2']], function(){
