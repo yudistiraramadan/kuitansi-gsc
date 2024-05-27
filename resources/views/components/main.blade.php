@@ -19,14 +19,14 @@
             <x-navbar></x-navbar>
 
             <div class="container-fluid">
-                <div class="card">
-                    <div class="card-body">
-                        {{-- <h5 class="card-title fw-semibold mb-4">{{ $title }}</h5> --}}
-                        <x-title>{{ $title }}</x-title>
-                        {{ $slot }}
-                    </div>
-                </div>
+                {{-- <div class="card"> --}}
+                {{-- <div class="card-body"> --}}
+                <x-title>{{ $title }}</x-title>
+                {{ $slot }}
+                {{-- </div> --}}
+                {{-- </div>  --}}
             </div>
+
         </div>
     </div>
     <x-script></x-script>
