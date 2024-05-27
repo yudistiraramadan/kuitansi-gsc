@@ -59,7 +59,7 @@
         <table>
             <thead>
                 <tr>
-                    <td width="40px"><img src="{{ asset('asset_offline/img/gsc.png') }}" width="50px" /></td>
+                    <td width="40px"><img src="{{ public_path('asset_offline/img/gsc.png') }}" width="50px" /></td>
                     <td colspan="1" width="100px" style="font-size:14px;">Gerak Sedekah Cilacap</td>
                     <td colspan="2"
                         style="text-align: center; font-size: 22px; font-family:Arial, Helvetica, sans-serif; font-weight:700; letter-spacing:10px">
@@ -167,9 +167,9 @@
                     <td colspan="2" style="text-align: center;">
                     </td>
                     <td colspan="1" style="text-align: center; position: relative;">
-                        <img src="{{ asset('asset_offline/img/gsc-scann.png') }}" width="130px"
+                        <img src="{{ public_path('asset_offline/img/gsc-scann.png') }}" width="130px"
                             style="position: absolute; top:20px; left: 20px; z-index: 0;">
-                        <img src="{{ asset('asset_offline/img/ttd-bendahara.png') }}" width="130px"
+                        <img src="{{ public_path('asset_offline/img/ttd-bendahara.png') }}" width="130px"
                             style="z-index: 1;" />
                     </td>
                 </tr>
