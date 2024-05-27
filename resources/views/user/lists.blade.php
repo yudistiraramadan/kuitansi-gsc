@@ -41,8 +41,8 @@
                         </td>
                         <td>
                             <div class="d-flex" style="justify-content: center; align-items:center;">
-                                <a data-toggle="tooltip" data-placement="top" title="Edit" href="#"
-                                    data-original-title="Edit">
+                                <a data-toggle="tooltip" data-placement="top" title="Edit"
+                                    href="{{ route('edit.user', $user->id) }}" data-original-title="Edit">
                                     <svg width="21" height="21" ;viewbox="0 0 21 21" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path

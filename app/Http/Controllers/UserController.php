@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index(){
         $users = User::join('detail_users', 'users.id', '=', 'detail_users.user_id')
         ->orderBy('users.created_at','desc')
-        ->get(['users.role_id', 'users.nama', 'detail_users.alamat', 'detail_users.phone']);
+        ->get(['users.id', 'users.role_id', 'users.nama', 'detail_users.alamat', 'detail_users.phone']);
         // dd($users);
         return view('user.lists', compact('users'), ['title'=>'Daftar User']); 
     }
@@ -68,5 +68,13 @@ class UserController extends Controller
             $detail_users->save();
 
             return redirect()->route('daftar.user')->with('success', 'User berhasil ditambahkan');
+    }
+
+    public function edit($id)
+    {
+        $user = User::join('detail_users', 'users.id', '=', 'detail_users.user_id')
+        ->get(['users.*', 'detail_users.*'])
+        ->find($id);
+        return view('user.edit', compact('user'), ['title'=>'Edit User']);
     }
 }
