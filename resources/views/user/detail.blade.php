@@ -97,11 +97,13 @@
                                 </a>
                             </div>
                             <div class="col-sm-6">
-                                <button type="button"
-                                    class="btn btn-primary w-100 justify-content-center me-2 d-flex align-items-center mb-3 mb-sm-0">
-                                    <i class="ti ti-edit fs-5 me-2"></i>
-                                    Edit
-                                </button>
+                                <a href="{{ route('edit.user', $user->id) }}">
+                                    <button type="button"
+                                        class="btn btn-primary w-100 justify-content-center me-2 d-flex align-items-center mb-3 mb-sm-0">
+                                        <i class="ti ti-edit fs-5 me-2"></i>
+                                        Edit
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>

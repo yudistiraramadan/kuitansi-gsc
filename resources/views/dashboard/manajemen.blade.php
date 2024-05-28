@@ -1,6 +1,7 @@
 <x-main>
     {{-- Apex Charts --}}
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> --}}
+    <script src="{{ asset('asset_offline/js/apexcharts.js') }}"></script>
     <x-slot:title>{{ $title }}</x-slot:title>
 
 
