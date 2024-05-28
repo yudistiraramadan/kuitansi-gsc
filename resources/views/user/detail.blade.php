@@ -1,5 +1,6 @@
 <x-main>
     <x-slot:title>{{ $title }}</x-slot:title>
+    <script src="{{ asset('asset_offline/js/apexcharts.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('asset_offline/css/table-responsive.css') }}">
 
     <div class="row">
@@ -122,7 +123,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                         type="button" role="tab" aria-controls="profile" aria-selected="false" tabindex="-1">
-                        Gaji karyawan
+                        Grafis Kuitansi
                     </button>
                 </li>
             </ul>
@@ -166,52 +167,9 @@
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="mb-4 border-bottom pb-3">
-                                <h4 class="card-title mb-0">Salary Report</h4>
+                                <h4 class="card-title mb-0">Nominal perbulan</h4>
                             </div>
-                            <div class="d-flex justify-content-between align-items-start">
-                                <span class="badge text-bg-primary">Standard</span>
-                                <div class="d-flex justify-content-center">
-                                    <sup class="h5 mt-3 mb-0 me-1 text-primary">$</sup>
-                                    <h1 class="display-5 mb-0 text-primary">50</h1>
-                                    <sub class="fs-6 pricing-duration mt-auto mb-3">/ month</sub>
-                                </div>
-                            </div>
-                            <ul class="g-2 my-4">
-                                <li class="mb-2 align-middle">
-                                    <i class="ti ti-circle-check fs-5 me-2 text-success"></i>
-                                    3 Periods per day
-                                </li>
-
-                                <li class="mb-2 align-middle">
-                                    <i class="ti ti-circle-check fs-5 me-2 text-success"></i>
-                                    Included Documents
-                                </li>
-
-                                <li class="mb-2 align-middle">
-                                    <i class="ti ti-circle-check fs-5 me-2 text-success"></i>
-                                    Free Books
-                                </li>
-
-                                <li class="mb-2 align-middle">
-                                    <i class="ti ti-circle-check fs-5 me-2 text-success"></i>
-                                    Students Help Salary
-                                </li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <span>Days</span>
-                                <span>75% Completed</span>
-                            </div>
-                            <div class="progress bg-primary-subtle mb-1">
-                                <div class="progress-bar text-bg-primary w-75" role="progressbar" aria-valuenow="75"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <span>4 days remaining</span>
-                            <div class="d-grid w-100 mt-4 pt-2">
-                                <button class="btn btn-primary" data-bs-target="#upgradePlanModal"
-                                    data-bs-toggle="modal">
-                                    Pay Full Salary
-                                </button>
-                            </div>
+                            <div id="chart"></div>
                         </div>
                     </div>
                 </div>
@@ -221,4 +179,55 @@
 </x-main>
 <script>
     let table = new DataTable('#tb-riwayat');
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const data = @json($data);
+        const months = data.map(item => item.month);
+        const nominals = data.map(item => item.total_nominal);
+
+        const options = {
+            chart: {
+                type: 'line',
+                height: '400px' // Sesuaikan tinggi chart disini
+            },
+            series: [{
+                name: 'Nominal',
+                data: nominals
+            }],
+            xaxis: {
+                categories: months
+            },
+            yaxis: {
+                labels: {
+                    formatter: function(value) {
+                        // Format rupiah tanpa desimal
+                        return new Intl.NumberFormat('id-ID', {
+                            style: 'currency',
+                            currency: 'IDR',
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0
+                        }).format(value);
+                    }
+                }
+            },
+            tooltip: {
+                y: {
+                    formatter: function(value) {
+                        // Format rupiah tanpa desimal
+                        return new Intl.NumberFormat('id-ID', {
+                            style: 'currency',
+                            currency: 'IDR',
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0
+                        }).format(value);
+                    }
+                }
+            }
+        };
+
+        const chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    });
 </script>

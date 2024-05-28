@@ -9,6 +9,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
+                    <h4 class="card-title">Pendapatan tiap bulan</h4>
                     <div id="chart">
                     </div>
                 </div>
@@ -44,7 +45,7 @@
 
         const options = {
             chart: {
-                type: 'line',
+                type: 'bar',
                 height: '400px' // Sesuaikan tinggi chart disini
             },
             series: [{

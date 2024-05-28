@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DetailUser;
-use App\Models\Kuitansi;
 use App\Models\User;
+use App\Models\Kuitansi;
+use App\Models\DetailUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -152,13 +153,40 @@ class UserController extends Controller
 
     public function detail($id){
         $user = User::join('detail_users', 'users.id', '=', 'detail_users.user_id')
-        // ->join('kuitansis', 'users.id', '=', 'kuitansis.user_id')
         ->get(['users.id', 'users.role_id', 'users.nama', 'users.username', 'users.photo', 'detail_users.user_id', 'detail_users.alamat', 'detail_users.phone', 'detail_users.gender'])
         ->find($id);
         // dd($users); 
+
         $kuitansis = Kuitansi::where('user_id', $id)
         ->orderBy('tanggal', 'desc')
         ->get();
-        return view('user.detail', compact('user', 'kuitansis'), ['title'=>'Detail User']);
+
+        $id_user = User::findOrFail($id);
+        // Mengambil data nominal per bulan untuk user
+        $chartData = Kuitansi::where('user_id', $id)
+            ->select(
+                DB::raw('MONTH(tanggal) as month'),
+                DB::raw('SUM(nominal) as total_nominal')
+            )
+            ->groupBy(DB::raw('MONTH(tanggal)'))
+            ->pluck('total_nominal', 'month')
+            ->toArray();
+        
+        // Menyiapkan data untuk semua bulan
+        $months = [
+            1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April',
+            5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August',
+            9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December'
+        ];
+
+        $data = [];
+        foreach ($months as $month => $name) {
+            $data[] = [
+                'month' => $name,
+                'total_nominal' => isset($chartData[$month]) ? $chartData[$month] : 0
+            ];
+        }
+
+        return view('user.detail', compact('user', 'kuitansis', 'id_user', 'data'), ['title'=>'Detail User']);
     }
 }
