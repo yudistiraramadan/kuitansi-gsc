@@ -64,8 +64,9 @@
                                                 </path>
                                             </svg>
                                         </a>&nbsp;&nbsp;
-                                        <a href="#" data-id="" class="print-kuitansi" name="print"
-                                            data-toggle="tooltip" data-placement="top" title="Detail" data-id="4"
+                                        <a href="{{ route('detail.user', $user->id) }}" data-id=""
+                                            class="print-kuitansi" name="print" data-toggle="tooltip"
+                                            data-placement="top" title="Detail" data-id="4"
                                             data-original-title="Detail">
                                             <svg fill="#03AED2" height="22px" width="22px" version="1.1"
                                                 id="Layer_1" xmlns="http://www.w3.org/2000/svg"

@@ -138,4 +138,13 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('daftar.user');
     }
+
+    public function detail($id){
+        $user = User::join('detail_users', 'users.id', '=', 'detail_users.user_id')
+        // ->join('kuitansis', 'users.id', '=', 'kuitansis.user_id')
+        ->get(['users.id', 'users.role_id', 'users.nama', 'users.username', 'detail_users.user_id', 'detail_users.alamat', 'detail_users.phone', 'detail_users.gender'])
+        ->find($id);
+        // dd($users); 
+        return view('user.detail', compact('user'), ['title'=>'Detail User']);
+    }
 }
