@@ -16,8 +16,8 @@ class KuitansiSeeder extends Seeder
         Kuitansi::create([
             'user_id' => 2,
             'donatur' => 'Dimas Chandra Efansa', 
-            'nominal' => 12000000,
-            'terbilang' => 'DUA BELAS JUTA RUPIAH',
+            'nominal' => 500000,
+            'terbilang' => 'LIMA RATUS RIBU RUPIAH',
             'keperluan' => 'Bantuan Banjir Nusawungu',
             'jenis_donasi' => 'Sedekah',
             'pembayaran' => 'Transfer',
@@ -26,8 +26,8 @@ class KuitansiSeeder extends Seeder
         Kuitansi::create([
             'user_id' => 1,
             'donatur' => 'Dimas Lahay Cihuy', 
-            'nominal' => 50000000,
-            'terbilang' => 'LIMA PULUH JUTA RUPIAH',
+            'nominal' => 1000000,
+            'terbilang' => 'SATU JUTA RUPIAH',
             'keperluan' => 'Pembangunan Rumah Sholeh',
             'jenis_donasi' => 'Wakaf',
             'pembayaran' => 'Transfer',
@@ -36,8 +36,8 @@ class KuitansiSeeder extends Seeder
         Kuitansi::create([
             'user_id' => 2,
             'donatur' => 'Muhammad Rizky Lalu', 
-            'nominal' => 5000000,
-            'terbilang' => 'LIMA JUTA RUPIAH',
+            'nominal' => 250000,
+            'terbilang' => 'DUA RATUS LIMA PULUH RIBU RUPIAH',
             'keperluan' => 'Zakat Fitrah',
             'jenis_donasi' => 'Zakat',
             'pembayaran' => 'Transfer',
