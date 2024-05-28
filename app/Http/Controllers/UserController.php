@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Kuitansi;
 use App\Models\DetailUser;
@@ -161,7 +162,7 @@ class UserController extends Controller
         ->orderBy('tanggal', 'desc')
         ->get();
 
-        $id_user = User::findOrFail($id);
+        // $id_user = User::findOrFail($id);
         // Mengambil data nominal per bulan untuk user
         $chartData = Kuitansi::where('user_id', $id)
             ->select(
@@ -187,6 +188,16 @@ class UserController extends Controller
             ];
         }
 
-        return view('user.detail', compact('user', 'kuitansis', 'id_user', 'data'), ['title'=>'Detail User']);
+        // Menghitung jumlah kuitansi yang dibuat oleh user secara keseluruhan
+        $totalKuitansi = Kuitansi::where('user_id', $id)->count();
+
+        // Menghitung jumlah kuitansi yang dibuat oleh user di bulan ini
+        $totalKuitansiBulan = Kuitansi::where('user_id', $id)
+            ->whereMonth('tanggal', Carbon::now()->month)
+            ->count();
+            
+        // dd($totalKuitansiBulan);
+
+        return view('user.detail', compact('user', 'kuitansis',  'data', 'totalKuitansi', 'totalKuitansiBulan'), ['title'=>'Detail User']);
     }
 }

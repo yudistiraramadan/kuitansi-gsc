@@ -27,7 +27,7 @@
                             </span>
 
                             <div class="ms-3">
-                                <p class="fw-normal text-dark fs-5 mb-0">24</p>
+                                <p class="fw-normal text-dark fs-5 mb-0">{{ $totalKuitansiBulan }}</p>
                                 <p class="mb-0 fs-3">Bulan ini</p>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                             </span>
 
                             <div class="ms-3">
-                                <p class="fw-normal text-dark fs-5 mb-0">568</p>
+                                <p class="fw-normal text-dark fs-5 mb-0">{{ $totalKuitansi }}</p>
                                 <p class="mb-0 fs-3">Keseluruhan</p>
                             </div>
                         </div>
