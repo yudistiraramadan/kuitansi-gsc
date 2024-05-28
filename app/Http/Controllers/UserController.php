@@ -145,6 +145,9 @@ class UserController extends Controller
         ->get(['users.id', 'users.role_id', 'users.nama', 'users.username', 'detail_users.user_id', 'detail_users.alamat', 'detail_users.phone', 'detail_users.gender'])
         ->find($id);
         // dd($users); 
-        return view('user.detail', compact('user'), ['title'=>'Detail User']);
+        $kuitansis = Kuitansi::where('user_id', $id)
+        ->orderBy('tanggal', 'desc')
+        ->get();
+        return view('user.detail', compact('user', 'kuitansis'), ['title'=>'Detail User']);
     }
 }

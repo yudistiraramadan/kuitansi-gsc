@@ -1,5 +1,7 @@
 <x-main>
     <x-slot:title>{{ $title }}</x-slot:title>
+    <link rel="stylesheet" href="{{ asset('asset_offline/css/table-responsive.css') }}">
+
     <div class="row">
         <div class="col-lg-5">
             <div class="card">
@@ -127,125 +129,33 @@
                         <div class="tab-pane fade show active" id="home" role="tabpanel"
                             aria-labelledby="home-tab">
                             <div class="mb-4 border-bottom pb-3">
-                                <h4 class="card-title mb-0">Riwayat Pembuatan Kuitansi</h4>
+                                <h4 class="card-title mb-0">Riwayat pembuatan kuitansi selama ini</h4>
                             </div>
                             <div class="table-responsive overflow-x-auto">
-                                <table class="table align-middle text-nowrap">
+                                <table id="tb-riwayat" class="table align-middle text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Code</th>
-                                            <th scope="col">
-                                                Subject Name
-                                            </th>
-                                            <th scope="col">Skill</th>
-                                            <th scope="col">Grade</th>
+                                            <th scope="col">No.</th>
+                                            <th scope="col">Donatur</th>
+                                            <th scope="col">Nominal</th>
+                                            <th scope="col">Keperluan</th>
+                                            <th scope="col">Tanggal</th>
                                         </tr>
                                     </thead>
                                     <tbody class="border-top">
-                                        <tr>
-                                            <td>
-                                                <p class="fw-normal mb-0 fs-3 text-dark">
-                                                    M103
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <p class="text-dark mb-0 fw-normal">
-                                                    Mathematics
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex flex-column">
-                                                    <small class="mb-1">90%</small>
-                                                    <div class="progress w-100 me-3 bg-success-subtle">
-                                                        <div class="progress-bar w-90 text-bg-success"
-                                                            aria-valuenow="90%" aria-valuemin="0"
-                                                            aria-valuemax="100">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="fw-bold text-success mb-0">A</p>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <p class="fw-normal mb-0 fs-3 text-dark">
-                                                    S221
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <p class="text-dark mb-0 fw-normal">
-                                                    Science
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex flex-column">
-                                                    <small class="mb-1">70%</small>
-                                                    <div class="progress w-100 me-3 bg-warning-subtle">
-                                                        <div class="progress-bar w-70 text-bg-warning"
-                                                            aria-valuenow="70%" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="fw-bold text-warning mb-0">B</p>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <p class="fw-normal mb-0 fs-3 text-dark">
-                                                    E452
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <p class="text-dark mb-0 fw-normal">
-                                                    English
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex flex-column">
-                                                    <small class="mb-1">50%</small>
-                                                    <div class="progress w-100 me-3 bg-danger-subtle">
-                                                        <div class="progress-bar w-50 text-bg-danger"
-                                                            aria-valuenow="50%" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="fw-bold text-danger mb-0">C</p>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <p class="fw-normal mb-0 fs-3 text-dark">
-                                                    B541
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <p class="text-dark mb-0 fw-normal">
-                                                    Biology
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex flex-column">
-                                                    <small class="mb-1">25%</small>
-                                                    <div class="progress w-100 me-3 bg-primary-subtle">
-                                                        <div class="progress-bar w-25 text-bg-primary"
-                                                            aria-valuenow="25%" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="fw-bold text-primary mb-0">E</p>
-                                            </td>
-                                        </tr>
+                                        @php
+                                            $no = 1;
+                                        @endphp
+                                        @foreach ($kuitansis as $kuitansi)
+                                            <tr>
+                                                <td> {{ $no++ }}. </td>
+                                                <td>{{ $kuitansi->donatur }}</td>
+                                                <td>Rp. {{ number_format($kuitansi->nominal, 0, ',', '.') }}</td>
+                                                <td>{{ $kuitansi->keperluan }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($kuitansi->tanggal)->locale('id')->isoFormat('D MMMM Y') }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -305,3 +215,6 @@
         </div>
     </div>
 </x-main>
+<script>
+    let table = new DataTable('#tb-riwayat');
+</script>
