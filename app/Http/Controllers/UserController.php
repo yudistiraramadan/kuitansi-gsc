@@ -32,7 +32,7 @@ class UserController extends Controller
                 'password' => 'required|min:8',
                 'password_confirmation' => 'required|same:password',
                 'phone' => 'required|numeric',
-                'foto' => 'mimes:png,jpg,JPEG|max:2048',
+                'photo' => 'mimes:png,jpg,JPEG|max:2048',
                 'alamat' => 'required',
                 'gender' => 'required',
             ],
@@ -47,7 +47,7 @@ class UserController extends Controller
                 'password_confirmation.required' => 'Konfirmasi password masih kosong.',
                 'password_confirmation.same' => 'Password tidak sama',
                 'phone.required' => 'No WhatsApp masih kosong',
-                'foto.mimes' => 'Format foto harus bertipe: png,jpg,JPEG. Dan ukuran maksimal 2MB',
+                'photo.mimes' => 'Format foto harus bertipe: png,jpg,JPEG. Dan ukuran maksimal 2MB',
                 'alamat.required' => 'Alamat masih kosong',
                 'gender.required' => 'Jenis kelamin masih kosong',
             ]
@@ -55,10 +55,17 @@ class UserController extends Controller
 
             $data = $request->all();
             $users = new User;
+            $defaultPhoto = ('default.png');
             $users->role_id = $data['role_id'];
             $users->nama = $data['nama'];
             $users->username = $data['username'];
             $users->password =  Hash::make($data['password']);
+            $users->photo = $defaultPhoto;
+
+            if ($request->hasFile('photo')) {
+                $request->file('photo')->move('foto-user/', $request->file('photo')->getClientOriginalName());
+                $users->photo = $request->file('photo')->getClientOriginalName();
+            }
             $users->save();
 
             $detail_users = new DetailUser;
@@ -103,6 +110,10 @@ class UserController extends Controller
             $user->role_id = $request->role_id;
             $user->nama = $request->nama;
             $user->username = $request->username;
+            if ($request->hasFile('photo')) {
+                $request->file('photo')->move('foto-user/', $request->file('photo')->getClientOriginalName());
+                $user->photo = $request->file('photo')->getClientOriginalName();
+            }
             $user->save();
 
             $detail_user = DetailUser::findOrFail($id);
@@ -142,7 +153,7 @@ class UserController extends Controller
     public function detail($id){
         $user = User::join('detail_users', 'users.id', '=', 'detail_users.user_id')
         // ->join('kuitansis', 'users.id', '=', 'kuitansis.user_id')
-        ->get(['users.id', 'users.role_id', 'users.nama', 'users.username', 'detail_users.user_id', 'detail_users.alamat', 'detail_users.phone', 'detail_users.gender'])
+        ->get(['users.id', 'users.role_id', 'users.nama', 'users.username', 'users.photo', 'detail_users.user_id', 'detail_users.alamat', 'detail_users.phone', 'detail_users.gender'])
         ->find($id);
         // dd($users); 
         $kuitansis = Kuitansi::where('user_id', $id)

@@ -75,10 +75,10 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="mb-3">
-                            <label for="foto" class="form-label">Upload foto <b>*jika ada</b></label>
-                            <input type="file" class="form-control" id="foto" name="foto"
+                            <label for="photo" class="form-label">Upload foto <b>*jika ada</b></label>
+                            <input type="file" class="form-control" id="photo" name="photo"
                                 value="{{ old('foto') }}">
-                            @error('foto')
+                            @error('photo')
                                 <div class="text text-danger">
                                     {{ $message }}
                                 </div>

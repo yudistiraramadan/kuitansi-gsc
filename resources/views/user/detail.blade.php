@@ -7,8 +7,10 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-                        <img src="{{ asset('asset_offline/img/profile2.jpg') }}" width="110" class="rounded-3 mb-3"
+                        <img src="{{ asset('foto-user/' . $user->photo) }}" width="110" class="rounded-3 mb-3"
                             alt="">
+                        {{-- <img src="{{ asset('foto-user/' . $data->photo . '') }}" height="320px" alt=""> --}}
+
                         <h5 class="mb-1">{{ $user->nama }}</h5>
                         @if ($user->role_id == 1)
                             <span class="badge bg-primary-subtle text-primary fw-light rounded-pill">Manajemen</span>
