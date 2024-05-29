@@ -45,8 +45,14 @@
 
         const options = {
             chart: {
-                type: 'bar',
+                type: 'line',
                 height: '400px' // Sesuaikan tinggi chart disini
+            },
+            stroke: {
+                curve: 'smooth',
+            },
+            markers: {
+                size: 4,
             },
             series: [{
                 name: 'Nominal',
