@@ -94,21 +94,28 @@
                         <label>Keperluan</label>
                     </td>
                     <td width="5%" style="text-align: center">:</td>
-                    <td colspan="2">Pembangunan Rumah Sholeh</td>
+                    <td>Pembangunan Rumah Sholeh</td>
+                    <td style="text-align: right;"><img src="{{ asset('asset_offline/img/BSI.png') }}" width="100px">
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <label>Nominal</label>
                     </td>
                     <td width="5%" style="text-align: center">:</td>
-                    <td colspan="2">Rp. 5.000.000</td>
+                    <td>Rp. 5.000.000</td>
+                    <td style="text-align: right;"><img src="{{ asset('asset_offline/img/BRI.png') }}" width="100px">
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <label>Terbilang</label>
                     </td>
                     <td width="5%" style="text-align: center">:</td>
-                    <td colspan="2">LIMA JUTA RUPIAH</td>
+                    <td>LIMA JUTA RUPIAH</td>
+                    <td style="text-align: right;"><img src="{{ asset('asset_offline/img/MANDIRI.png') }}"
+                            width="100px">
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="5">

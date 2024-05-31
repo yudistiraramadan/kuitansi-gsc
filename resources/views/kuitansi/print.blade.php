@@ -81,36 +81,47 @@
                     <td colspan="2">Bismillahirahmanirrahim,</td>
                     <td></td>
                     <td></td>
-                    <td style="font-size:14px; text-align:right">Jalan Sulawesi, Perum Puri Tanjung Intan No.B2
-                        Karang Lor, Gunungsimping, Cilacap Tengah 53224</td>
+                    <td style="font-size:14px; text-align:right; font-weight:bold">Kantor Pusat</td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <label>Telah diterima dari</label>
                     </td>
                     <td width="5%" style="text-align: center">:</td>
-                    <td colspan="2">{{ $kuitansi->donatur }}</td>
+                    <td>{{ $kuitansi->donatur }}</td>
+                    <td style="font-size:14px; text-align:right">Jalan Sulawesi, Perum Puri Tanjung Intan No.B2
+                        Karang Lor, Gunungsimping, Cilacap Tengah 53224</td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <label>Keperluan</label>
                     </td>
                     <td width="5%" style="text-align: center">:</td>
-                    <td colspan="2">{{ $kuitansi->keperluan }}</td>
+                    <td>{{ $kuitansi->keperluan }}</td>
+                    <td style="font-size:14px; text-align:right">0857-0122-3333 &nbsp; <b>Admin</b></td>
+                    {{-- <td style="text-align: right;">
+                        <img src="{{ public_path('asset_offline/img/BSI.png') }}" width="100px">
+                    </td> --}}
                 </tr>
                 <tr>
                     <td colspan="2">
                         <label>Nominal</label>
                     </td>
                     <td width="5%" style="text-align: center">:</td>
-                    <td colspan="2">Rp. {{ number_format($kuitansi->nominal, 0, ',', '.') }}</td>
+                    <td>Rp. {{ number_format($kuitansi->nominal, 0, ',', '.') }}</td>
+                    {{-- <td style="text-align: right;">
+                        <img src="{{ public_path('asset_offline/img/BRI.png') }}"width="100px">
+                    </td> --}}
                 </tr>
                 <tr>
                     <td colspan="2">
                         <label>Terbilang</label>
                     </td>
                     <td width="5%" style="text-align: center">:</td>
-                    <td colspan="2">{{ $kuitansi->terbilang }}</td>
+                    <td>{{ $kuitansi->terbilang }}</td>
+                    {{-- <td style="text-align: right;">
+                        <img src="{{ public_path('asset_offline/img/MANDIRI.png') }}" width="100px">
+                    </td> --}}
                 </tr>
                 <tr>
                     <td colspan="5">
