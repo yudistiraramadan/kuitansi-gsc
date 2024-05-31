@@ -58,8 +58,10 @@
         <table>
             <thead>
                 <tr>
-                    <td width="40px"><img src="{{ asset('img/gsc/gsc.png') }}" width="50px" /></td>
-                    <td colspan="1" width="100px" style="font-size:14px;">Gerak Sedekah Cilacap</td>
+                    <td colspan="2" width="50px">
+                        <img width="120px" src="{{ asset('asset_offline/img/logo-gsc.png') }}" />
+                    </td>
+                    {{-- <td colspan="1" width="100px" style="font-size:14px;">Gerak Sedekah Cilacap</td> --}}
                     <td colspan="2"
                         style="text-align: center; font-size: 22px; font-family:Arial, Helvetica, sans-serif; font-weight:700; letter-spacing:10px">
                         KUITANSI</td>
@@ -164,12 +166,13 @@
                     <td></td>
                     <td></td>
                     <td colspan="2" style="text-align: center">
-                        {{-- <img src="{{ asset('img/gsc/ttd-bendahara.png') }}" width="130px" /> --}}
+                        {{-- <img src="{{ asset('asset_offline/img/ttd-bendahara.png') }}" width="130px" /> --}}
                     </td>
                     <td colspan="1" style="text-align: center; position: relative;">
-                        <img src="{{ asset('img/gsc/gsc-scann.png') }}" width="130px"
+                        <img src="{{ asset('asset_offline/img/gsc-scan.png') }}" width="130px"
                             style="position: absolute; top:20px; left: 20px; z-index: 0;">
-                        <img src="{{ asset('img/gsc/ttd-bendahara.png') }}" width="130px" style="z-index: 1;" />
+                        <img src="{{ asset('asset_offline/img/ttd-bendahara.png') }}" width="130px"
+                            style="z-index: 1;" />
                     </td>
                 </tr>
                 <tr>

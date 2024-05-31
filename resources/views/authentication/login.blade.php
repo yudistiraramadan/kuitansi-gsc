@@ -22,7 +22,8 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="{{ asset('asset_offline/img/gsc2.png') }}" width="120" alt="">
+                                    <img src="{{ asset('asset_offline/img/gsc-login.png') }}" width="120"
+                                        alt="">
                                 </a>
                                 <p class="text-center">Sistem Kuitansi Digital</p>
                                 <form action="{{ route('postlogin') }}" method="POST">

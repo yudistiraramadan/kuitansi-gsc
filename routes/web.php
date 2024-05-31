@@ -21,6 +21,9 @@ Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
     Route::post('/kuitansi/delete/{id}', [KuitansiController::class, 'delete'])->name('delete.kuitansi');
     Route::get('/kuitansi/print/{id}', [KuitansiController::class, 'print'])->name('print.kuitansi');
     Route::get('/kuitansi/excel', [KuitansiController::class, 'excel'])->name('excel.kuitansi');
+    Route::get('/kuitansi/tes', function(){
+        return view('kuitansi.sample');
+    });
 
 
     // User
