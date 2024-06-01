@@ -21,7 +21,7 @@ class KuitansiSeeder extends Seeder
             'keperluan' => 'Bantuan Banjir Nusawungu',
             'jenis_donasi' => 'Sedekah',
             'pembayaran' => 'Transfer',
-            'tanggal' => '2024-5-20',
+            'tanggal' => '2024-6-20',
         ]);
         Kuitansi::create([
             'user_id' => 1,
@@ -31,7 +31,7 @@ class KuitansiSeeder extends Seeder
             'keperluan' => 'Pembangunan Rumah Sholeh',
             'jenis_donasi' => 'Wakaf',
             'pembayaran' => 'Transfer',
-            'tanggal' => '2024-5-22',
+            'tanggal' => '2024-6-22',
         ]);
         Kuitansi::create([
             'user_id' => 2,
@@ -41,7 +41,7 @@ class KuitansiSeeder extends Seeder
             'keperluan' => 'Zakat Fitrah',
             'jenis_donasi' => 'Zakat',
             'pembayaran' => 'Transfer',
-            'tanggal' => '2024-5-23',
+            'tanggal' => '2024-6-23',
         ]);
     }
 }

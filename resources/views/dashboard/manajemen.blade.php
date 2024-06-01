@@ -1,9 +1,9 @@
 <x-main>
     {{-- Apex Charts --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> --}}
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts"> --}}
     <script src="{{ asset('asset_offline/js/apexcharts.js') }}"></script>
     <x-slot:title>{{ $title }}</x-slot:title>
-
 
     <div class="row">
         <div class="col-lg-12">
@@ -15,6 +15,27 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">Akumulasi pendapatan perbulan</div>
+                    <div id="chart-month"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">Akumulasi pendapatan pertahun</div>
+                    <div id="chart-year"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </x-main>
 <script src="{{ asset('asset_offline/js/sweealert2.js') }}"></script>
@@ -38,7 +59,7 @@
     </script>
 @endif
 
-
+{{-- Line Chart --}}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const data = @json($chartData);
@@ -90,6 +111,82 @@
         };
 
         const chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    });
+</script>
+
+{{-- Donut Month --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var options = {
+            series: @json(
+                $donationMonth->pluck('total_nominal')->map(function ($value) {
+                    return (int) $value;
+                })),
+            chart: {
+                type: 'donut'
+            },
+            labels: @json($donationMonth->pluck('jenis_donasi')),
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: '65%'
+                    }
+                }
+            },
+            dataLabels: {
+                formatter: function(val) {
+                    return 'Rp ' + val.toLocaleString();
+                }
+            },
+            tooltip: {
+                y: {
+                    formatter: function(val) {
+                        return 'Rp ' + val.toLocaleString();
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart-month"), options);
+        chart.render();
+    });
+</script>
+
+{{-- Donut Year --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var options = {
+            series: @json(
+                $donationYear->pluck('total_nominal')->map(function ($value) {
+                    return (int) $value;
+                })),
+            chart: {
+                type: 'donut'
+            },
+            labels: @json($donationYear->pluck('jenis_donasi')),
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: '65%'
+                    }
+                }
+            },
+            dataLabels: {
+                formatter: function(val) {
+                    return 'Rp ' + val.toLocaleString();
+                }
+            },
+            tooltip: {
+                y: {
+                    formatter: function(val) {
+                        return 'Rp ' + val.toLocaleString();
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart-year"), options);
         chart.render();
     });
 </script>
