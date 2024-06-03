@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Kotak Infaq GSC</title>
+    <title>Transparansi GSC</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -23,7 +23,7 @@
     <!-- Vendor CSS Files -->
     <link href="{{ asset('landingpage/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('landingpage/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('landingpage/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('landingpage/vendor/bootstrap-sicons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('landingpage/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('landingpage/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('landingpage/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
@@ -56,20 +56,19 @@
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="{{ route('landingpage') }}">SIKOFAQ</a></h1>
+            <h1 class="logo me-auto"><a href="{{ route('landingpage') }}">E-KUITANSI</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <a href="index.html" class="logo me-auto"><img src="{{ asset('landingpage/img/logo.png') }}" alt=""
                     class="img-fluid"></a>
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">Grafik</a></li>
+                    <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
                     <li><a class="nav-link scrollto" href="#services">Layanan</a></li>
+                    <li><a class="nav-link scrollto" href="#graphic">Grafik</a></li>
+                    <li><a class="nav-link scrollto" href="#table">Tabel</a></li>
                     <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
-                    <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
-                    <li><a class="getstarted scrollto" href="https://www.donasi.gsc.or.id/" target="_blank">Donasi
-                            Online</a></li>
+                    <li><a class="getstarted scrollto" href="{{ route('login') }}" target="_blank">Login</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -94,7 +93,7 @@
                     </div>
                 </div>
                 <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="{{ asset('asset_offline/img/gsc3d.png') }}" class="img-fluid animated" alt=""
+                    <img src="{{ asset('asset_offline/img/avatar.svg') }}" class="img-fluid animated" alt=""
                         style="width: 500px;">
                 </div>
             </div>
@@ -119,7 +118,7 @@
                         data-aos-delay="200">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-file"></i></div>
-                            <h4><a href="">Amanah</a></h4>
+                            <h4><a href="javascript:void(0)">Amanah</a></h4>
                             <p>Semua donasi yang terkumpul akan tersalurkan kepada penerima manfaat yang berhak dan
                                 tepat.</p>
                         </div>
@@ -129,7 +128,7 @@
                         data-aos-delay="300">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-tachometer"></i></div>
-                            <h4><a href="">Cepat dan Mudah</a></h4>
+                            <h4><a href="javascript:void(0)">Cepat dan Mudah</a></h4>
                             <p>Proses donasi yang kamu lakukan hanya dalam hitungan menit dengan berbagai metode
                                 pembayaran</p>
                         </div>
@@ -139,7 +138,7 @@
                         data-aos-delay="400">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-layer"></i></div>
-                            <h4><a href="">Transparan</a></h4>
+                            <h4><a href="javascript:void(0)">Transparan</a></h4>
                             <p>Pencairan dan penggunaan donasi yang sudah diterima penggalang dana dapat dilihat di
                                 update aktivitas</p>
                         </div>
@@ -151,11 +150,12 @@
         </section><!-- End Services Section -->
 
         <!-- ======= About Us Section ======= -->
-        <section id="about" class="about" style="margin-top: 80px;">
+        <section id="graphic" class="about" style="margin-top: 80px;">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
                     <h2>Grafik Pendapatan</h2>
+                    <p>Berikut grafik untuk memantau perolehan tabung kebaikan dan kotak infaq setiap bulannya.</p>
                 </div>
 
                 <div class="row">
@@ -182,13 +182,16 @@
             <div class="container" data-aos="zoom-in">
 
                 <div class="row">
-                    <div class="col-lg-9 text-center text-lg-start">
-                        <h3>DONASI ONLINE</h3>
-                        <p>Kini tersedia platform donasi online gsc, dapat diakses dengan klik tombol ini yaa</p>
+                    <div class="col-lg-6 text-center text-lg-start">
+                        <h3>WEBSITE</h3>
+                        <p>Website resmi Gerak Sedekah Cilacap (GSC) menyediakan informasi tentang program pemberdayaan
+                            sosial, ekonomi, kesehatan, dan pendidikan. Pengunjung dapat mengetahui detail program
+                            penggalangan dana seperti Tabung Kebaikan dan Kotak Infaq, melihat transparansi keuangan,
+                            serta menemukan cara untuk berkontribusi atau menjadi relawan.</p>
+                        <a class="cta-btn align-middle" href="https://www.gsc.web.id" target="_blank">Masuk</a>
                     </div>
-                    <div class="col-lg-3 cta-btn-container text-center">
-                        <a class="cta-btn align-middle" href="https://www.donasi.gsc.or.id" target="_blank">Donasi
-                            Online</a>
+                    <div class="col-lg-6 text-center">
+                        <img src="{{ asset('asset_offline/img/gsc3d.png') }}" alt="" width="300px">
                     </div>
                 </div>
 
@@ -197,10 +200,11 @@
         <!-- End Cta Section -->
 
         <!-- ======= Tabel Donasi ======= -->
-        <section id="skills" class="skills section-bg" style="padding-top: 120px;">
+        <section id="table" class="skills section-bg" style="padding-top: 120px;">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
                     <h2>Tabel Penarikan</h2>
+                    <p>Tabel untuk memantau donasi dari saudara/i ketika sudah diambil oleh petugas</p>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
@@ -225,10 +229,11 @@
                                             @foreach ($kuitansis as $kuitansi)
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
-                                                    <td>{{ $kuitansi->donatur }}</td>
-                                                    <td>{{ $kuitansi->nominal }}</td>
+                                                    <td>Hamba Allah</td>
+                                                    <td>Rp. {{ number_format($kuitansi->nominal, 0, ',', '.') }}</td>
                                                     <td>{{ $kuitansi->nama }}</td>
-                                                    <td>{{ $kuitansi->tanggal }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($kuitansi->tanggal)->locale('id')->isoFormat('dddd, D MMMM Y') }}
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -243,136 +248,103 @@
         </section>
         <!-- End Skills Section -->
 
-        <!-- ======= Skills Section ======= -->
-        {{-- <section id="skills" class="skills section-bg">
-            <div class="container" data-aos="fade-up">
-
-                <div class="row">
-                    <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-                        <img src="{{asset('landingpage/img/cilacap.png')}}" class="img-fluid" alt="" width="400px">
-                    </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-                        <h3>Jumlah Munfiq Per Tiap Kecamatan</h3>
-                        <p class="fst-italic">
-                            Berikut merupakan prosentase jumlah data munfiq di setiap Kecamatan Cilacap.
-                        </p>
-
-                        <div class="skills-content">
-
-                            <div class="progress">
-                                <span class="skill">Cilacap Tengah <i class="val">75</i></span>
-                                <div class="progress-bar-wrap">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="75"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-
-                            <div class="progress">
-                                <span class="skill">Cilacap Utara <i class="val">50</i></span>
-                                <div class="progress-bar-wrap">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="50"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-
-                            <div class="progress">
-                                <span class="skill">Nusawung <i class="val">75%</i></span>
-                                <div class="progress-bar-wrap">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="75"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-
-                            <div class="progress">
-                                <span class="skill">Photoshop <i class="val">55%</i></span>
-                                <div class="progress-bar-wrap">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="55"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </section> --}}
-        <!-- End Skills Section -->
-
-
-
-
-
 
         <!-- ======= Frequently Asked Questions Section ======= -->
         <section id="faq" class="faq section-bg">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>FAQ</h2>
-                    <p>Pertanyaan Seputar Kotak Infaq Gerak Sedekah Cilacap.</p>
+                    <h2>Pertanyaan Umum</h2>
+                    <p>Daftar pertanyaan seputar tabung kebaikan dan kotak infaq.</p>
                 </div>
 
                 <div class="faq-list">
                     <ul>
                         <li data-aos="fade-up" data-aos-delay="100">
                             <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
-                                data-bs-target="#faq-list-1">Kapan Kotak Infaq Ditarik <i
+                                data-bs-target="#faq-list-1">Apa itu program Tabung Kebaikan dan Kotak Infaq? <i
                                     class="bx bx-chevron-down icon-show"></i><i
                                     class="bx bx-chevron-up icon-close"></i></a>
                             <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
                                 <p>
-                                    Kotak infaq akan ditarik oleh petugas selama kurun waktu sebulan sekali atau
-                                    berdasarkan permintaan dari munfiq.
+                                    Program Tabung Kebaikan dan Kotak Infaq adalah inisiatif penggalangan dana offline
+                                    oleh Gerak Sedekah Cilacap (GSC), di mana Tabung Kebaikan ditempatkan di perumahan
+                                    dan Kotak Infaq di unit usaha seperti rumah makan, toko, kios, atau mall.
                                 </p>
                             </div>
                         </li>
 
                         <li data-aos="fade-up" data-aos-delay="200">
                             <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                data-bs-target="#faq-list-2" class="collapsed">Tes Dropdown 3<i
+                                data-bs-target="#faq-list-2" class="collapsed">Bagaimana cara kerja Tabung Kebaikan?<i
                                     class="bx bx-chevron-down icon-show"></i><i
                                     class="bx bx-chevron-up icon-close"></i></a>
                             <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
                                 <p>
-                                    Pesan dropdown 3.
+                                    Petugas menempatkan tabung di lokasi donatur, biasanya di perumahan. Donatur dapat
+                                    menyumbangkan dana mereka ke dalam tabung tersebut, yang kemudian secara rutin
+                                    diambil dan didata oleh petugas GSC.
+
                                 </p>
                             </div>
                         </li>
 
                         <li data-aos="fade-up" data-aos-delay="300">
                             <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                data-bs-target="#faq-list-3" class="collapsed">Tes Dropdown 4<i
-                                    class="bx bx-chevron-down icon-show"></i><i
+                                data-bs-target="#faq-list-3" class="collapsed">Apa perbedaan antara Tabung Kebaikan
+                                dan Kotak Infaq?<i class="bx bx-chevron-down icon-show"></i><i
                                     class="bx bx-chevron-up icon-close"></i></a>
                             <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
                                 <p>
-                                    Pesan dropdown 4.
+                                    Tabung Kebaikan ditempatkan di perumahan atau unit usaha tertentu, sedangkan Kotak
+                                    Infaq biasanya ditempatkan di unit usaha seperti rumah makan, toko, kios, atau mall.
+                                    Keduanya berfungsi sebagai media untuk penggalangan dana, namun lokasi penempatannya
+                                    yang berbeda.
+
                                 </p>
                             </div>
                         </li>
 
                         <li data-aos="fade-up" data-aos-delay="400">
                             <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                data-bs-target="#faq-list-4" class="collapsed">Tes Dropdown 5<i
+                                data-bs-target="#faq-list-4" class="collapsed">Bagaimana transparansi dana yang
+                                dikumpulkan melalui Tabung Kebaikan dan Kotak Infaq?<i
                                     class="bx bx-chevron-down icon-show"></i><i
                                     class="bx bx-chevron-up icon-close"></i></a>
                             <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                                 <p>
-                                    Pesan dropdown 5.
+                                    Dana yang dikumpulkan dari Tabung Kebaikan dan Kotak Infaq secara rutin diambil dan
+                                    dicatat oleh petugas GSC, kemudian diserahkan kepada bendahara/manajemen pusat.
+                                    Transparansi pengumpulan dan penggunaan dana ini dapat dilihat di website resmi GSC.
                                 </p>
                             </div>
                         </li>
 
                         <li data-aos="fade-up" data-aos-delay="500">
                             <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                data-bs-target="#faq-list-5" class="collapsed">Tes Dropdown 5 <i
-                                    class="bx bx-chevron-down icon-show"></i><i
+                                data-bs-target="#faq-list-5" class="collapsed">Bagaimana cara menjadi donatur dalam
+                                program Tabung Kebaikan dan Kotak Infaq?<i class="bx bx-chevron-down icon-show"></i><i
                                     class="bx bx-chevron-up icon-close"></i></a>
                             <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
                                 <p>
-                                    Pesan dropdown 5.
+                                    Anda dapat menjadi donatur dengan menyumbangkan dana ke dalam Tabung Kebaikan yang
+                                    ditempatkan di perumahan Anda atau ke dalam Kotak Infaq yang tersedia di berbagai
+                                    unit usaha seperti rumah makan dan toko.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-aos="fade-up" data-aos-delay="500">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                                data-bs-target="#faq-list-5" class="collapsed">Bagaimana cara mengajukan permohonan
+                                untuk menempatkan Tabung Kebaikan atau Kotak Infaq di lokasi saya?
+                                <i class="bx bx-chevron-down icon-show"></i><i
+                                    class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    Anda dapat menghubungi Gerak Sedekah Cilacap melalui kontak yang tersedia di website
+                                    resmi mereka untuk mengajukan permohonan penempatan Tabung Kebaikan atau Kotak Infaq
+                                    di lokasi Anda.
                                 </p>
                             </div>
                         </li>
@@ -381,16 +353,18 @@
                 </div>
 
             </div>
-        </section><!-- End Frequently Asked Questions Section -->
+        </section>
+        <!-- End Frequently Asked Questions Section -->
 
-    </main><!-- End #main -->
+    </main>
+    <!-- End #main -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
 
         <div class="container footer-bottom clearfix">
             <div class="copyright">
-                2023 &copy; Gerak Sedekah Cilacap
+                2024 &copy; Gerak Sedekah Cilacap
             </div>
             <div class="credits">
                 Created By <a href="https://www.instagram.com/yudistira8404/" target="_blank">Yudistira RK</a>
@@ -400,7 +374,7 @@
 
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+            class="bi bi-arrow-bar-up" style="color: white;"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('landingpage/vendor/aos/aos.js') }}"></script>
@@ -469,11 +443,8 @@
     </script>
 
     {{-- Datatables --}}
-
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-
     <script>
         $(document).ready(function() {
             $('#tb-kuitansi').DataTable();
