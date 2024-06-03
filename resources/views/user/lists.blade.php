@@ -7,9 +7,6 @@
             {{-- <h5 class="card-title fw-semibold mb-4">{{ $title }}</h5> --}}
             <a href="{{ route('create.user') }}">
                 <button class="btn btn-primary mb-2">Tambah</button>
-            </a>&nbsp;&nbsp;
-            <a href="#">
-                <button class="btn btn-success mb-2">Excel</button>
             </a>
 
             <div class="table-responsive table-container">

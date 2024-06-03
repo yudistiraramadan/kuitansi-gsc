@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Kuitansi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -65,6 +67,49 @@ class DashboardController extends Controller
 
 
     public function dashboard_petugas(){
-        return view('dashboard.petugas', ['title' => 'Dashboard Petugas']);
+        $user = User::join('detail_users', 'users.id', '=', 'detail_users.user_id')
+        ->get(['users.id', 'users.role_id', 'users.nama', 'users.username', 'users.photo', 'detail_users.user_id', 'detail_users.alamat', 'detail_users.phone', 'detail_users.gender'])
+        ->find(Auth::user()->id);
+
+        $kuitansis = Kuitansi::where('user_id', Auth::user()->id)
+        ->orderBy('tanggal', 'desc')
+        ->get();
+
+        // $id_user = User::findOrFail($id);
+        // Mengambil data nominal per bulan untuk user
+        $chartData = Kuitansi::where('user_id', Auth::user()->id)
+            ->select(
+                DB::raw('MONTH(tanggal) as month'),
+                DB::raw('SUM(nominal) as total_nominal')
+            )
+            ->groupBy(DB::raw('MONTH(tanggal)'))
+            ->pluck('total_nominal', 'month')
+            ->toArray();
+        
+        // Menyiapkan data untuk semua bulan
+        $months = [
+            1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
+            5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
+            9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'
+        ];
+
+        $data = [];
+        foreach ($months as $month => $name) {
+            $data[] = [
+                'month' => $name,
+                'total_nominal' => isset($chartData[$month]) ? $chartData[$month] : 0
+            ];
+        }
+
+        // Menghitung jumlah kuitansi yang dibuat oleh user secara keseluruhan
+        $totalKuitansi = Kuitansi::where('user_id', Auth::user()->id)->count();
+
+        // Menghitung jumlah kuitansi yang dibuat oleh user di bulan ini
+        $totalKuitansiBulan = Kuitansi::where('user_id', Auth::user()->id)
+            ->whereMonth('tanggal', Carbon::now()->month)
+            ->count();
+            
+        // dd($chartData);
+        return view('dashboard.petugas', ['title' => 'Dashboard Petugas'], compact('chartData', 'data'));
     }
 }
