@@ -43,8 +43,28 @@ class LandingpageController extends Controller
             'nominalsTabungKebaikan' => $nominalsTabungKebaikan,
             'nominalsKotakInfaq' => $nominalsKotakInfaq
         ];
+
+        $kuitansis = Kuitansi::join('users', 'kuitansis.user_id', '=', 'users.id')
+        ->orderBy('kuitansis.tanggal', 'desc')
+        ->get(['kuitansis.id', 'kuitansis.donatur', 'kuitansis.nominal', 'kuitansis.tanggal', 'kuitansis.jenis_donasi', 'users.nama'])
+        ->whereIn('jenis_donasi', ['Tabung Kebaikan', 'Kotak Infaq']);
+
+        // ============================================================================================================================
+
+        $currentYear = Carbon::now()->year;
+
+        // Total nominal untuk Tabung Kebaikan
+        $tabung = Kuitansi::whereYear('tanggal', $currentYear)
+        ->where('jenis_donasi', 'Tabung Kebaikan')
+        ->sum('nominal');
+
+        // Total nominal untuk Kotak Infaq
+        $kotak = Kuitansi::whereYear('tanggal', $currentYear)
+        ->where('jenis_donasi', 'Kotak Infaq')
+        ->sum('nominal');
+
+        // dd($kotak);
     
-        return view('landingpage.index', compact('chartData'));
-        dd($chartData);
+        return view('landingpage.index', compact('chartData', 'kuitansis', 'tabung', 'kotak'));
     }
 }
