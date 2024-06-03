@@ -3,11 +3,12 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KuitansiController;
+use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', [AuthController::class, 'loginpage'])->name('login');
+Route::get('/', [LandingpageController::class, 'index'])->name('landingpage');
+Route::get('/login', [AuthController::class, 'loginpage'])->name('login');
 Route::post('/post-login', [AuthController::class, 'postlogin'])->name('postlogin');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');   
 

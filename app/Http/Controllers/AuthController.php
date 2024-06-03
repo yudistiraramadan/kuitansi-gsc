@@ -39,12 +39,12 @@ class AuthController extends Controller
             }
         }
     }
-    return redirect('/')->with('error', 'Username/password yang dimasukan salah!');
+    return redirect('/login')->with('error', 'Username/password yang dimasukan salah!');
 }
 
     public function logout(){
         Auth::logout();
-        return redirect('/');
+        return redirect('/login');
     }
 
 
