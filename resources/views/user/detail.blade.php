@@ -192,6 +192,9 @@
                 type: 'line',
                 height: '400px' // Sesuaikan tinggi chart disini
             },
+            stroke: {
+                curve: 'smooth',
+            },
             series: [{
                 name: 'Nominal',
                 data: nominals

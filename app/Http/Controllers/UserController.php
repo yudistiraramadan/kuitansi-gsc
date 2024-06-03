@@ -8,6 +8,7 @@ use App\Models\Kuitansi;
 use App\Models\DetailUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -124,7 +125,11 @@ class UserController extends Controller
             $detail_user->gender = $request->gender;
             $detail_user->save();
 
-            return redirect()->route('daftar.user')->with('success', 'Data user berhasil diedit!');        
+            if (Auth::user()->role_id == 1) {
+                return redirect()->route('daftar.user')->with('success', 'Data user berhasil diedit!');        
+            } elseif(Auth::user()->role_id == 2){
+                return redirect()->route('dashboard.petugas')->with('success', 'Data user berhasil diedit!');        
+            }
     }
 
     public function update_password(Request $request, $id){
@@ -143,7 +148,12 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect()->route('daftar.user')->with('success', 'Password user berhasil diubah!');
+
+        if (Auth::user()->role_id == 1) {
+            return redirect()->route('daftar.user')->with('success', 'Password user berhasil diubah!');        
+        } elseif(Auth::user()->role_id == 2){
+            return redirect()->route('dashboard.petugas')->with('success', 'Password user berhasil diubah!');        
+        }
     }
 
     public function delete(Request $request, $id){

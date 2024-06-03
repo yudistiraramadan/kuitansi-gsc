@@ -25,21 +25,25 @@ Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
         return view('kuitansi.sample');
     });
 
-
     // User
     Route::get('/user', [UserController::class, 'index'])->name('daftar.user');
     Route::get('/user/tambah', [UserController::class, 'create'])->name(('create.user'));
     Route::post('/user/store', [UserController::class, 'store'])->name('store.user');
-    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('edit.user');
-    Route::post('/user/update/{id}', [UserController::class, 'update'])->name('update.user');
-    Route::post('user/update/password/{id}', [UserController::class, 'update_password'])->name('update.password');
     Route::post('user/delete/{id}', [UserController::class, 'delete'])->name('delete.user');
-    Route::get('/user/detail/{id}', [UserController::class, 'detail'])->name('detail.user');
 });
 
 Route::group(['middleware' => ['auth' => 'cekrole:1,2']], function(){
+    
+    // Kuitansi
     Route::get('/kuitansi/tambah', [KuitansiController::class, 'create'])->name('create.kuitansi');
     Route::post('/kuitansi/store', [KuitansiController::class, 'store'])->name('store.kuitansi');
+    
+    // User
+    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('edit.user');
+    Route::post('/user/update/{id}', [UserController::class, 'update'])->name('update.user');
+    Route::get('/user/detail/{id}', [UserController::class, 'detail'])->name('detail.user');
+    Route::post('user/update/password/{id}', [UserController::class, 'update_password'])->name('update.password');
+
 });
 
 Route::group(['middleware' => ['auth' => 'cekrole:2']], function(){
