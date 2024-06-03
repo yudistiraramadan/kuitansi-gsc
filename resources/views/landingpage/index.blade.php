@@ -68,7 +68,7 @@
                     <li><a class="nav-link scrollto" href="#graphic">Grafik</a></li>
                     <li><a class="nav-link scrollto" href="#table">Tabel</a></li>
                     <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
-                    <li><a class="getstarted scrollto" href="{{ route('login') }}" target="_blank">Login</a></li>
+                    <li><a class="getstarted scrollto" href="{{ route('login') }}">Login</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>

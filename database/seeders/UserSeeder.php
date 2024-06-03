@@ -16,23 +16,23 @@ class UserSeeder extends Seeder
         User::create([
             'role_id' => '1',
             'nama' => 'Jaka Mentari',
-            'username' => 'manajer',
-            'password' => bcrypt('tes'),
+            'username' => 'jaka',
+            'password' => bcrypt('Bismillah2024'),
             'photo' => 'jaka.png',
         ]);
         User::create([
             'role_id' => '2',
-            'nama' => 'Yudistira Ramadan Kalimasada',
-            'username' => 'petugas',
-            'password' => bcrypt('tes'),
-            'photo' => 'yudis.jpg',
+            'nama' => 'Ananda Sarlyn',
+            'username' => 'nanda',
+            'password' => bcrypt('Bismillah2024'),
+            'photo' => 'default.png',
         ]);
         User::create([
             'role_id' => '2',
-            'nama' => 'Catur Fajar Nugroho',
-            'username' => 'catur',
-            'password' => bcrypt('tes'),
-            'photo' => 'default.jpg',
+            'nama' => 'Yudistira Ramadan Kalimasada',
+            'username' => 'yudis',
+            'password' => bcrypt('Bismillah2024'),
+            'photo' => 'yudis.jpg',
         ]);
     }
 }

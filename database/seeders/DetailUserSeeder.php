@@ -22,13 +22,13 @@ class DetailUserSeeder extends Seeder
         DetailUser::create([
             'user_id' => '2',
             'alamat' => 'Jalan Sulawesi Perum Puri Tanjung Intan Cilacap Tengah',
-            'phone' => '085228409840',
-            'gender' => 'Laki-laki',
+            'phone' => '089674035882',
+            'gender' => 'Perempuan',
         ]);
         DetailUser::create([
             'user_id' => '3',
-            'alamat' => 'Jalan Lombok Gang Simping Cilacap Tengah',
-            'phone' => '085642145239',
+            'alamat' => 'Jalan Sulawesi Perum Puri Tanjung Intan Cilacap Tengah',
+            'phone' => '085228409840',
             'gender' => 'Laki-laki',
         ]);
     }

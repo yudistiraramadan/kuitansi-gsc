@@ -8,6 +8,7 @@ use App\Models\UserKuitansi;
 use Illuminate\Http\Request;
 use App\Exports\KuitansiExcel;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -136,8 +137,11 @@ class KuitansiController extends Controller
     }
 
     public function print_thermal($id){
+        // Mengambil user beserta kuitansi yang berelasi
+        // $kuitansi = User::with('kuitansis')->findOrFail($id);
         $kuitansi = Kuitansi::findOrFail($id);
-        // $pdf = PDF::loadView('kuitansi.thermal', compact('kuitansi'))->setPaper([0, 0, 226.77, 841.89]); // 58mm x 297mm
+        // dd($kuitansi);
+
         $pdf = PDF::loadView('kuitansi.thermal', compact('kuitansi'))->setPaper([0, 0, 453.54, 1683.78]); // 116mm x 594mm
         return $pdf->stream('kuitansi.pdf');
     }
