@@ -48,6 +48,7 @@ class LandingpageController extends Controller
         ->orderBy('kuitansis.tanggal', 'desc')
         ->get(['kuitansis.id', 'kuitansis.donatur', 'kuitansis.nominal', 'kuitansis.tanggal', 'kuitansis.jenis_donasi', 'users.nama'])
         ->whereIn('jenis_donasi', ['Tabung Kebaikan', 'Kotak Infaq']);
+        // dd($kuitansis);
 
         // ============================================================================================================================
 

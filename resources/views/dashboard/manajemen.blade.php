@@ -136,7 +136,7 @@
             },
             dataLabels: {
                 formatter: function(val) {
-                    return 'Rp ' + val.toLocaleString();
+                    return val.toLocaleString() + '%';
                 }
             },
             tooltip: {
@@ -174,7 +174,7 @@
             },
             dataLabels: {
                 formatter: function(val) {
-                    return 'Rp ' + val.toLocaleString();
+                    return val.toLocaleString() + '%';
                 }
             },
             tooltip: {

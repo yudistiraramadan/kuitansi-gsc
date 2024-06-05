@@ -217,6 +217,7 @@
                                                 <th scope="col" style="text-align:left;">No.</th>
                                                 <th scope="col">Terima Dari</th>
                                                 <th scope="col">Nominal</th>
+                                                <th scope="col">Jenis Donasi</th>
                                                 <th scope="col">Petugas</th>
                                                 <th scope="col">Tanggal</th>
                                             </tr>
@@ -231,6 +232,7 @@
                                                     <td>{{ $no++ }}</td>
                                                     <td>Hamba Allah</td>
                                                     <td>Rp. {{ number_format($kuitansi->nominal, 0, ',', '.') }}</td>
+                                                    <td>{{ $kuitansi->jenis_donasi }}</td>
                                                     <td>{{ $kuitansi->nama }}</td>
                                                     <td>{{ \Carbon\Carbon::parse($kuitansi->tanggal)->locale('id')->isoFormat('dddd, D MMMM Y') }}
                                                     </td>
