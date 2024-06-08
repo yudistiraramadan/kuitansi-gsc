@@ -7,105 +7,67 @@
         <div class="col-lg-5">
             <div class="card">
                 <div class="card-body">
-                    <div class="text-center">
-                        <img src="{{ asset('foto-user/' . $user->photo) }}" width="110" class="rounded-3 mb-3"
-                            alt="">
-                        {{-- <img src="{{ asset('foto-user/' . $data->photo . '') }}" height="320px" alt=""> --}}
 
-                        <h5 class="mb-1">{{ $user->nama }}</h5>
-                        @if ($user->role_id == 1)
-                            <span class="badge bg-primary-subtle text-primary fw-light rounded-pill">Manajemen</span>
-                        @elseif($user->role_id == 2)
-                            <span class="mb-1 badge  bg-success-subtle text-success">Petugas</span>
-                        @endif
+                    <div class="pb-1 mb-2 border-bottom">
+                        <h6>Informasi Lengkap</h6>
                     </div>
 
-                    <div class="hstack justify-content-between mt-5">
-                        <div class="d-flex align-items-center">
-                            <span class="bg-success-subtle p-6 rounded-3 round-50 hstack justify-content-center">
-                                <i class="ti ti-moon text-success fs-7"></i>
-                            </span>
+                    <ul>
+                        <li class="py-2">
+                            <p class="fw-normal text-dark mb-0">
+                                Nama:
+                                <span class="fw-light ms-1">{{ $donatur->nama }}</span>
+                            </p>
+                        </li>
 
-                            <div class="ms-3">
-                                <p class="fw-normal text-dark fs-5 mb-0">{{ $totalKuitansiBulan }}</p>
-                                <p class="mb-0 fs-3">Bulan ini</p>
-                            </div>
+                        <li class="py-2">
+                            <p class="fw-normal text-dark mb-0">
+                                Kecamatan:
+                                <span class="fw-light ms-1">{{ $donatur->kecamatan }}</span>
+                            </p>
+                        </li>
+
+                        <li class="py-2">
+                            <p class="fw-normal text-dark mb-0">
+                                No WhatsApp:
+                                <span class="fw-light ms-1">{{ $donatur->phone }}</span>
+                            </p>
+                        </li>
+
+                        <li class="py-2">
+                            <p class="fw-normal text-dark mb-0">
+                                Gender:
+                                <span class="fw-light ms-1">{{ $donatur->gender }}</span>
+                            </p>
+                        </li>
+
+                        <li class="py-2">
+                            <p class="fw-normal text-dark mb-0">
+                                Alamat:
+                                <span class="fw-light ms-1">{{ $donatur->alamat }}</span>
+                            </p>
+                        </li>
+
+                    </ul>
+
+                    <div class="row mt-4">
+                        <div class="col-sm-6">
+                            <a href="{{ route('daftar.donatur') }}">
+                                <button style="color: white" type="button"
+                                    class="btn btn-warning w-100 justify-content-center d-flex align-items-center">
+                                    <i class="ti ti-chevron-left fs-5 me-2"></i>
+                                    Kembali
+                                </button>
+                            </a>
                         </div>
-
-                        <div class="d-flex align-items-center">
-                            <span class="bg-success-subtle p-6 rounded-3 round-50 hstack justify-content-center">
-                                <i class="ti ti-cash-banknote text-success fs-7"></i>
-                            </span>
-
-                            <div class="ms-3">
-                                <p class="fw-normal text-dark fs-5 mb-0">{{ $totalKuitansi }}</p>
-                                <p class="mb-0 fs-3">Keseluruhan</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-5">
-                        <div class="pb-1 mb-2 border-bottom">
-                            <h6>Informasi Lengkap</h6>
-                        </div>
-
-                        <ul>
-                            <li class="py-2">
-                                <p class="fw-normal text-dark mb-0">
-                                    Nama:
-                                    <span class="fw-light ms-1">{{ $user->nama }}</span>
-                                </p>
-                            </li>
-
-                            <li class="py-2">
-                                <p class="fw-normal text-dark mb-0">
-                                    Username:
-                                    <span class="fw-light ms-1">{{ $user->username }}</span>
-                                </p>
-                            </li>
-
-                            <li class="py-2">
-                                <p class="fw-normal text-dark mb-0">
-                                    No WhatsApp:
-                                    <span class="fw-light ms-1">{{ $user->phone }}</span>
-                                </p>
-                            </li>
-
-                            <li class="py-2">
-                                <p class="fw-normal text-dark mb-0">
-                                    Gender:
-                                    <span class="fw-light ms-1">{{ $user->gender }}</span>
-                                </p>
-                            </li>
-
-                            <li class="py-2">
-                                <p class="fw-normal text-dark mb-0">
-                                    Alamat:
-                                    <span class="fw-light ms-1">{{ $user->alamat }}</span>
-                                </p>
-                            </li>
-
-                        </ul>
-
-                        <div class="row mt-4">
-                            <div class="col-sm-6">
-                                <a href="{{ route('daftar.user') }}">
-                                    <button style="color: white" type="button"
-                                        class="btn btn-warning w-100 justify-content-center d-flex align-items-center">
-                                        <i class="ti ti-chevron-left fs-5 me-2"></i>
-                                        Kembali
-                                    </button>
-                                </a>
-                            </div>
-                            <div class="col-sm-6">
-                                <a href="{{ route('edit.user', $user->id) }}">
-                                    <button type="button"
-                                        class="btn btn-primary w-100 justify-content-center me-2 d-flex align-items-center mb-3 mb-sm-0">
-                                        <i class="ti ti-edit fs-5 me-2"></i>
-                                        Edit
-                                    </button>
-                                </a>
-                            </div>
+                        <div class="col-sm-6">
+                            <a href="{{ route('edit.donatur', $donatur->id) }}">
+                                <button type="button"
+                                    class="btn btn-primary w-100 justify-content-center me-2 d-flex align-items-center mb-3 mb-sm-0">
+                                    <i class="ti ti-edit fs-5 me-2"></i>
+                                    Edit
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -141,7 +103,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No.</th>
-                                            <th scope="col">Donatur</th>
+                                            <th scope="col">Petugas</th>
                                             <th scope="col">Nominal</th>
                                             <th scope="col">Keperluan</th>
                                             <th scope="col">Tanggal</th>
@@ -153,7 +115,7 @@
                                         @endphp
                                         @foreach ($kuitansis as $kuitansi)
                                             <tr>
-                                                <td> {{ $no++ }}. </td>
+                                                <td style="text-align: left;"> {{ $no++ }}. </td>
                                                 <td>{{ $kuitansi->nama }}</td>
                                                 <td>Rp. {{ number_format($kuitansi->nominal, 0, ',', '.') }}</td>
                                                 <td>{{ $kuitansi->keperluan }}</td>

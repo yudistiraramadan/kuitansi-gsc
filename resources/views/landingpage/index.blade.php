@@ -23,7 +23,7 @@
     <!-- Vendor CSS Files -->
     <link href="{{ asset('landingpage/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('landingpage/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('landingpage/vendor/bootstrap-sicons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('landingpage/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('landingpage/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('landingpage/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('landingpage/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
@@ -46,21 +46,15 @@
     {{-- <link rel="stylesheet" href="{{ asset('asset_offline/css/datatables.css') }}"> --}}
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css">
 
 </head>
 
 <body>
-
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
 
             <h1 class="logo me-auto"><a href="{{ route('landingpage') }}">E-KUITANSI</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <a href="index.html" class="logo me-auto"><img src="{{ asset('landingpage/img/logo.png') }}" alt=""
-                    class="img-fluid"></a>
-
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
@@ -149,7 +143,7 @@
             </div>
         </section><!-- End Services Section -->
 
-        <!-- ======= About Us Section ======= -->
+        <!-- ======= Grafik Pendapatan ======= -->
         <section id="graphic" class="about" style="margin-top: 80px;">
             <div class="container" data-aos="fade-up">
 
@@ -173,9 +167,33 @@
                         </div>
                     </div>
                 </div>
+
+                <br>
+
+                <div class="row">
+                    <h5>Top 5 kecamatan tertinggi</h5>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Tabung Kebaikan</h5>
+                                <p style="color: red;">*periode {{ $bulan[date('n')] }}</p>
+                                <div id="chart-tabung"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Kotak Infaq</h5>
+                                <p style="color: red;">*periode {{ $bulan[date('n')] }}</p>
+                                <div id="chart-kotak"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        <!-- End About Us Section -->
+        <!-- End Grafik Pendapatan -->
 
         <!-- ======= Cta Section ======= -->
         <section id="cta" class="cta" style="height: 500px; margin-top: 80px;">
@@ -385,7 +403,6 @@
     <script src="{{ asset('landingpage/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('landingpage/vendor/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('landingpage/vendor/waypoints/noframework.waypoints.js') }}"></script>
-    <script src="{{ asset('landingpage/vendor/php-email-form/validate.js') }}"></script>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('landingpage/js/main.js') }}"></script>
@@ -397,7 +414,7 @@
 
             const options = {
                 chart: {
-                    type: 'line',
+                    type: 'area',
                     height: 400
                 },
                 stroke: {
@@ -436,10 +453,93 @@
                             }).format(value);
                         }
                     }
-                }
+                },
+                dataLabels: {
+                    enabled: false
+                },
             };
 
             const chart = new ApexCharts(document.querySelector("#chart-pendapatan-bulanan"), options);
+            chart.render();
+        });
+    </script>
+
+    {{-- Top Tabung Kebaikan --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const data = @json($monthlyTabung);
+
+            const options = {
+                chart: {
+                    type: 'bar',
+                    height: 300
+                },
+                series: [{
+                    name: 'Total Donasi',
+                    data: data.map(item => item.total_nominal)
+                }],
+                xaxis: {
+                    categories: data.map(item => item.kecamatan),
+                },
+                yaxis: {
+                    labels: {
+                        formatter: function(value) {
+                            return new Intl.NumberFormat('id-ID', {
+                                style: 'currency',
+                                currency: 'IDR',
+                                minimumFractionDigits: 0,
+                                maximumFractionDigits: 0
+                            }).format(value);
+                        }
+                    },
+                },
+                colors: ['#26A0FC'],
+                dataLabels: {
+                    enabled: false
+                },
+            };
+
+            const chart = new ApexCharts(document.querySelector("#chart-tabung"), options);
+            chart.render();
+        });
+    </script>
+
+    {{-- Top Kotak Infaq --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const data = @json($monthlyKotak);
+
+            const options = {
+                chart: {
+                    type: 'bar',
+                    height: 300
+                },
+                series: [{
+                    name: 'Total Donasi',
+                    data: data.map(item => item.total_nominal)
+                }],
+                xaxis: {
+                    categories: data.map(item => item.kecamatan),
+                },
+                yaxis: {
+                    labels: {
+                        formatter: function(value) {
+                            return new Intl.NumberFormat('id-ID', {
+                                style: 'currency',
+                                currency: 'IDR',
+                                minimumFractionDigits: 0,
+                                maximumFractionDigits: 0
+                            }).format(value);
+                        }
+                    },
+                },
+                colors: ['#26E6A6'],
+                dataLabels: {
+                    enabled: false
+                },
+            };
+
+            const chart = new ApexCharts(document.querySelector("#chart-kotak"), options);
             chart.render();
         });
     </script>

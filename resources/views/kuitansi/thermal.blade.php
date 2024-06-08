@@ -55,7 +55,7 @@
         </div>
         <br>
         <div class="content">
-            <p><strong>Nama Donatur:</strong> {{ $kuitansi->donatur }}</p>
+            <p><strong>Nama Donatur:</strong> {{ $kuitansi->nama }}</p>
             <p><strong>Nominal:</strong> Rp. {{ number_format($kuitansi->nominal, 0, ',', '.') }}</p>
             <p><strong>Terbilang:</strong> {{ $kuitansi->terbilang }}</p>
             <p><strong>Keperluan:</strong> {{ $kuitansi->keperluan }}</p>

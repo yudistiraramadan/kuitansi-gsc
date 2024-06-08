@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\KuitansiController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\UserController;
@@ -26,6 +27,15 @@ Route::group(['middleware' => ['auth' => 'cekrole:1']], function(){
         return view('kuitansi.sample');
     });
 
+    // Donatur
+    Route::get('/donatur', [DonaturController::class, 'index'])->name('daftar.donatur');
+    Route::get('/donatur/tambah', [DonaturController::class, 'create'])->name('create.donatur');
+    Route::post('donatur/store', [DonaturController::class, 'store'])->name('store.donatur');
+    Route::get('/donatur/edit/{id}', [DonaturController::class, 'edit'])->name('edit.donatur');
+    Route::post('/donatur/update/{id}', [DonaturController::class, 'update'])->name('update.donatur');
+    Route::post('/donatur/delete/{id}', [DonaturController::class, 'delete'])->name('delete.donatur');
+    route::get('/donatur/detail/{id}', [DonaturController::class, 'detail'])->name('detail.donatur');
+
     // User
     Route::get('/user', [UserController::class, 'index'])->name('daftar.user');
     Route::get('/user/tambah', [UserController::class, 'create'])->name(('create.user'));
@@ -38,6 +48,7 @@ Route::group(['middleware' => ['auth' => 'cekrole:1,2']], function(){
     // Kuitansi
     Route::get('/kuitansi/tambah', [KuitansiController::class, 'create'])->name('create.kuitansi');
     Route::post('/kuitansi/store', [KuitansiController::class, 'store'])->name('store.kuitansi');
+    Route::get('/kuitansi/search-donatur', [KuitansiController::class, 'searchDonatur'])->name('search-donatur.kuitansi');
     
     // User
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('edit.user');

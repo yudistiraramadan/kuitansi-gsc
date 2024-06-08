@@ -9,13 +9,17 @@ class Kuitansi extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id',
-        'donatur', 'nominal', 'terbilang', 'keperluan',
+        'user_id', 'donatur_id',
+        'nominal', 'terbilang', 'keperluan',
         'jenis_donasi', 'pembayaran', 'tanggal'
     ];
 
     public function users(){
         // return $this->belongsToMany(User::class, 'user_kuitansi');
         return $this->belongsTo(User::class);
+    }
+
+    public function donaturs(){
+        return $this->belongsTo(Donatur::class);
     }
 }

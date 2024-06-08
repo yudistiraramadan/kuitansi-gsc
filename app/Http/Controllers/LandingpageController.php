@@ -10,6 +10,21 @@ use Illuminate\Support\Facades\DB;
 class LandingpageController extends Controller
 {
     public function index(){
+        $bulan = [
+            1 => 'Januari',
+            2 => 'Februari',
+            3 => 'Maret',
+            4 => 'April',
+            5 => 'Mei',
+            6 => 'Juni',
+            7 => 'Juli',
+            8 => 'Agustus',
+            9 => 'September',
+            10 => 'Oktober',
+            11 => 'November',
+            12 => 'Desember'
+        ];
+
         $kuitansis = Kuitansi::select(
             DB::raw('SUM(nominal) as total_nominal'),
             DB::raw('MONTH(tanggal) as month'),
@@ -46,7 +61,7 @@ class LandingpageController extends Controller
 
         $kuitansis = Kuitansi::join('users', 'kuitansis.user_id', '=', 'users.id')
         ->orderBy('kuitansis.tanggal', 'desc')
-        ->get(['kuitansis.id', 'kuitansis.donatur', 'kuitansis.nominal', 'kuitansis.tanggal', 'kuitansis.jenis_donasi', 'users.nama'])
+        ->get(['kuitansis.id', 'kuitansis.nominal', 'kuitansis.tanggal', 'kuitansis.jenis_donasi', 'users.nama'])
         ->whereIn('jenis_donasi', ['Tabung Kebaikan', 'Kotak Infaq']);
         // dd($kuitansis);
 
@@ -64,8 +79,31 @@ class LandingpageController extends Controller
         ->where('jenis_donasi', 'Kotak Infaq')
         ->sum('nominal');
 
-        // dd($kotak);
+        // ============================================================================================================================
+        
+        // Top donasi kecamatan tertinggi bulan ini
+        $currentMonth = Carbon::now()->month;
+        $monthlyTabung = DB::table('kuitansis')
+        ->join('donaturs', 'kuitansis.donatur_id', '=', 'donaturs.id')
+        ->select('donaturs.kecamatan', DB::raw('SUM(kuitansis.nominal) as total_nominal'))
+        ->whereIn('jenis_donasi', ['Tabung Kebaikan'])
+        ->whereMonth('kuitansis.tanggal', $currentMonth)
+        ->groupBy('donaturs.kecamatan')
+        ->orderBy('total_nominal', 'desc')
+        ->limit(5)
+        ->get();
+
+        $monthlyKotak = DB::table('kuitansis')
+        ->join('donaturs', 'kuitansis.donatur_id', '=', 'donaturs.id')
+        ->select('donaturs.kecamatan', DB::raw('SUM(kuitansis.nominal) as total_nominal'))
+        ->whereIn('jenis_donasi', ['Kotak Infaq'])
+        ->whereMonth('kuitansis.tanggal', $currentMonth)
+        ->groupBy('donaturs.kecamatan')
+        ->orderBy('total_nominal', 'desc')
+        ->limit(5)
+        ->get();
+        // dd($topKecamatan);
     
-        return view('landingpage.index', compact('chartData', 'kuitansis', 'tabung', 'kotak'));
+        return view('landingpage.index', compact('bulan', 'chartData', 'kuitansis', 'tabung', 'kotak', 'monthlyTabung', 'monthlyKotak'));
     }
 }

@@ -88,7 +88,7 @@
                         <label>Telah diterima dari</label>
                     </td>
                     <td width="5%" style="text-align: center">:</td>
-                    <td>{{ $kuitansi->donatur }}</td>
+                    <td>{{ $kuitansi->nama }}</td>
                     <td style="font-size:14px; text-align:right">Jalan Sulawesi, Perum Puri Tanjung Intan No.B2
                         Karang Lor, Gunungsimping, Cilacap Tengah 53224</td>
                 </tr>
@@ -190,7 +190,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td colspan="2" style="text-align: center;">({{ $kuitansi->donatur }})
+                    <td colspan="2" style="text-align: center;">({{ $kuitansi->nama }})
                     </td>
                     <td colspan="1" style="text-align: center;">(Kholifatun
                         Mualfiyah)</td>

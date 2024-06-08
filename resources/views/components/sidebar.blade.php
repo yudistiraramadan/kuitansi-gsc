@@ -41,10 +41,19 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link success-hover-bg" href="{{ route('daftar.user') }}"
+                            <a class="sidebar-link sidebar-link success-hover-bg" href="{{ route('daftar.donatur') }}"
                                 aria-expanded="false">
                                 <span class="aside-icon p-2 bg-light-success rounded-3">
                                     <i class="ti ti-user fs-7 text-success"></i>
+                                </span>
+                                <span class="hide-menu ms-2 ps-1">Donatur</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link indigo-hover-bg" href="{{ route('daftar.user') }}"
+                                aria-expanded="false">
+                                <span class="aside-icon p-2 bg-light-indigo rounded-3">
+                                    <i class="ti ti-user fs-7 text-indigo"></i>
                                 </span>
                                 <span class="hide-menu ms-2 ps-1">User</span>
                             </a>

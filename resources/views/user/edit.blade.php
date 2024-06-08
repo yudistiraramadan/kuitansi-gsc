@@ -95,30 +95,32 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="col-lg-3">
-                        <label for="" class="form-label">Hak Akses :</label>
-                        <div class="col-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="role_id" id="manajemen"
-                                    value="1" {{ $user->role_id == 1 ? 'checked' : '' }}>
-                                <label class="form-check-label" for="manajemen">
-                                    Manajemen
-                                </label>
+                    @if (Auth::user()->role_id == 1)
+                        <div class="col-lg-3">
+                            <label for="" class="form-label">Hak Akses :</label>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="role_id" id="manajemen"
+                                        value="1" {{ $user->role_id == 1 ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="manajemen">
+                                        Manajemen
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="role_id" id="petugas"
-                                    value="2" {{ $user->role_id == 2 ? 'checked' : '  ' }}>
-                                <label class="form-check-label" for="petugas">
-                                    Petugas
-                                </label>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="role_id" id="petugas"
+                                        value="2" {{ $user->role_id == 2 ? 'checked' : '  ' }}>
+                                    <label class="form-check-label" for="petugas">
+                                        Petugas
+                                    </label>
+                                </div>
                             </div>
+                            @error('role_id')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
-                        @error('role_id')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
+                    @endif
                 </div>
                 <br>
                 <a href="{{ route('daftar.user') }}">

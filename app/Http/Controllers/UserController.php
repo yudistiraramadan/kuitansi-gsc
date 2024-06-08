@@ -157,7 +157,7 @@ class UserController extends Controller
     }
 
     public function delete(Request $request, $id){
-        $user = User::find($request->id);
+        $user = User::find($request->$id);
         $user->delete();
         return redirect()->route('daftar.user');
     }
@@ -168,11 +168,12 @@ class UserController extends Controller
         ->find($id);
         // dd($users); 
 
-        $kuitansis = Kuitansi::where('user_id', $id)
+        $kuitansis = Kuitansi::join('donaturs', 'kuitansis.donatur_id', '=', 'donaturs.id')
+        ->where('user_id', $id)
         ->orderBy('tanggal', 'desc')
         ->get();
+        // dd($kuitansis);
 
-        // $id_user = User::findOrFail($id);
         // Mengambil data nominal per bulan untuk user
         $chartData = Kuitansi::where('user_id', $id)
             ->select(

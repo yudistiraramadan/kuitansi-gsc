@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kuitansis', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('donatur');
+            $table->integer('donatur_id')->unsigned();
             $table->bigInteger('nominal');
             $table->string('terbilang');
             $table->string('keperluan');
@@ -24,6 +24,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('donatur_id')->references('id')->on('donaturs')->onDelete('cascade');
         });
     }
 

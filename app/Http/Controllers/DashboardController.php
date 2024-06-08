@@ -52,6 +52,7 @@ class DashboardController extends Controller
         ->get();
 
         // ==============================================================================================
+
         // Donut akumulasi pendapatan per tahun
         $currentYear = Carbon::now()->year;
         $donationYear = DB::table('kuitansis')
@@ -61,8 +62,35 @@ class DashboardController extends Controller
         ->get();
         // dd($donationYear);
 
+        // ==============================================================================================
 
-        return view('dashboard.manajemen', ['title' => 'Dashboard Manajemen'], compact('chartData', 'donationMonth', 'donationYear'));
+        // Top 5 donasi donatur tertinggi bulan ini
+        $currentMonth = Carbon::now()->month;
+        $topDonations = DB::table('kuitansis')
+        ->join('donaturs', 'kuitansis.donatur_id', '=', 'donaturs.id')
+        ->select('donaturs.nama', DB::raw('SUM(kuitansis.nominal) as total_nominal'))
+        ->whereMonth('kuitansis.tanggal', $currentMonth)
+        ->groupBy('donaturs.nama')
+        ->orderBy('total_nominal', 'desc')
+        ->limit(5)
+        ->get();
+
+        // ==============================================================================================
+
+        // Top 5 donasi kecamatan tertinggi bulan ini
+        $currentMonth = Carbon::now()->month;
+        $topKecamatan = DB::table('kuitansis')
+        ->join('donaturs', 'kuitansis.donatur_id', '=', 'donaturs.id')
+        ->select('donaturs.kecamatan', DB::raw('SUM(kuitansis.nominal) as total_nominal'))
+        ->whereMonth('kuitansis.tanggal', $currentMonth)
+        ->groupBy('donaturs.kecamatan')
+        ->orderBy('total_nominal', 'desc')
+        ->limit(5)
+        ->get();
+
+
+
+        return view('dashboard.manajemen', ['title' => 'Dashboard Manajemen'], compact('chartData', 'donationMonth', 'donationYear', 'topDonations', 'topKecamatan'));
     }
 
 

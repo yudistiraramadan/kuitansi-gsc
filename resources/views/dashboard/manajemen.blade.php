@@ -21,6 +21,27 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
+                    <div class="card-title">Top 5 donatur tertinggi bulan ini</div>
+                    <div id="chart-top-donatur"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">Top 5 kecamatan tertinggi bulan ini</div>
+                    <div id="chart-top-kecamatan"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
                     <div class="card-title">Akumulasi pendapatan perbulan</div>
                     <div id="chart-month"></div>
                 </div>
@@ -66,7 +87,7 @@
 
         const options = {
             chart: {
-                type: 'line',
+                type: 'area',
                 height: '400px' // Sesuaikan tinggi chart disini
             },
             stroke: {
@@ -107,7 +128,10 @@
                         }).format(value);
                     }
                 }
-            }
+            },
+            dataLabels: {
+                enabled: false
+            },
         };
 
         const chart = new ApexCharts(document.querySelector("#chart"), options);
@@ -187,6 +211,86 @@
         };
 
         var chart = new ApexCharts(document.querySelector("#chart-year"), options);
+        chart.render();
+    });
+</script>
+
+{{-- Top Donations --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const data = @json($topDonations);
+
+        const options = {
+            chart: {
+                type: 'bar',
+                height: 300
+            },
+            series: [{
+                name: 'Total Nominal',
+                data: data.map(donor => donor.total_nominal)
+            }],
+            xaxis: {
+                categories: data.map(donor => donor.nama.split(' ')[0]),
+            },
+            yaxis: {
+                labels: {
+                    formatter: function(value) {
+                        return new Intl.NumberFormat('id-ID', {
+                            style: 'currency',
+                            currency: 'IDR',
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0
+                        }).format(value);
+                    }
+                },
+            },
+            colors: ['#FFA62F'],
+            dataLabels: {
+                enabled: false
+            },
+        };
+
+        const chart = new ApexCharts(document.querySelector("#chart-top-donatur"), options);
+        chart.render();
+    });
+</script>
+
+{{-- Top Kecamatan --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const data = @json($topKecamatan);
+
+        const options = {
+            chart: {
+                type: 'bar',
+                height: 300
+            },
+            series: [{
+                name: 'Total Donasi',
+                data: data.map(item => item.total_nominal)
+            }],
+            xaxis: {
+                categories: data.map(item => item.kecamatan),
+            },
+            yaxis: {
+                labels: {
+                    formatter: function(value) {
+                        return new Intl.NumberFormat('id-ID', {
+                            style: 'currency',
+                            currency: 'IDR',
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0
+                        }).format(value);
+                    }
+                },
+            },
+            colors: ['#28a745'],
+            dataLabels: {
+                enabled: false
+            },
+        };
+
+        const chart = new ApexCharts(document.querySelector("#chart-top-kecamatan"), options);
         chart.render();
     });
 </script>

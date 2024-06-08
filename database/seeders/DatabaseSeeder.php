@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Donatur;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -24,5 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(DetailUserSeeder::class);
         // $this->call(KuitansiSeeder::class);
+        $this->call(DonaturSeeder::class);
     }
 }

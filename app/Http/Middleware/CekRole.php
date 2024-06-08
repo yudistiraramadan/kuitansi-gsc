@@ -21,9 +21,15 @@ class CekRole
         //     return $next($request);
         // }
 
+        // if(Auth::check() && Auth::user()->role_id == null){
+        //     return redirect('/login');
+        // }
+
         if(in_array($request->user()->role_id, $role)){
             return $next($request);
-        }
-        return redirect('loginpage')->with('error', 'User tidak terdaftar!!');
+        }elseif(Auth::check() && Auth::user()->role_id == null){
+            return redirect('/login');
+        }else
+        return redirect('/login')->with('error', 'User tidak terdaftar!!');
     }
 }
