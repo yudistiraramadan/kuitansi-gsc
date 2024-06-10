@@ -144,17 +144,15 @@ class KuitansiController extends Controller
         return Excel::download(new KuitansiExcel, 'kuitansi.xlsx');
     }
 
-    public function print_thermal(Request $request){
-        // Mengambil user beserta kuitansi yang berelasi
-        // $kuitansi = User::with('kuitansis')->findOrFail($id);
-        // $kuitansi = Kuitansi::findOrFail($id);
+    public function print_thermal($id) {
         $kuitansi = Kuitansi::join('donaturs', 'kuitansis.donatur_id', '=', 'donaturs.id')
         ->get(['kuitansis.*', 'donaturs.nama'])
-        ->find($request->id);
-        // dd($kuitansi);
-
-        $pdf = PDF::loadView('kuitansi.thermal', compact('kuitansi'))->setPaper([0, 0, 453.54, 1683.78]); // 116mm x 594mm
+        ->find($id);
+        // findOrFail($id);
+        // $pdf = PDF::loadView('kuitansi.thermal', compact('kuitansi'))->setPaper([0, 0, 164.4, 841.8]); // 58mm x 297mm
+        $pdf = PDF::loadView('kuitansi.thermal', compact('kuitansi'))->setPaper([0, 0, 328.8, 1683.6]); // 116mm x 594mm
         return $pdf->stream('kuitansi.pdf');
     }
+    
 
 }
