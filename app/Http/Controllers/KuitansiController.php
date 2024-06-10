@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Donatur;
 use App\Models\Kuitansi;
-use App\Models\UserKuitansi;
 use Illuminate\Http\Request;
 use App\Exports\KuitansiExcel;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -145,14 +145,61 @@ class KuitansiController extends Controller
     }
 
     public function print_thermal($id) {
+        $petugas = Auth::user()->nama;
         $kuitansi = Kuitansi::join('donaturs', 'kuitansis.donatur_id', '=', 'donaturs.id')
-        ->get(['kuitansis.*', 'donaturs.nama'])
+        ->get(['kuitansis.*', 'donaturs.nama', 'donaturs.phone'])
         ->find($id);
-        // findOrFail($id);
-        // $pdf = PDF::loadView('kuitansi.thermal', compact('kuitansi'))->setPaper([0, 0, 164.4, 841.8]); // 58mm x 297mm
-        $pdf = PDF::loadView('kuitansi.thermal', compact('kuitansi'))->setPaper([0, 0, 328.8, 1683.6]); // 116mm x 594mm
-        return $pdf->stream('kuitansi.pdf');
+        $tanggal = Carbon::parse($kuitansi->tanggal)->locale('id')->isoFormat('dddd, D MMMM Y');
+        
+        $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://api.fonnte.com/send',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => array(
+            'target' => "$kuitansi->phone",
+            'message' => "Assalamualaikum Warahmatullahi Wabarakatuh,
+                \nKami ucapkan :
+                \nآجَرَكَ اللهُ فِيْمَا اَعْطَيْتَ، وَبَارَكَ فِيْمَا اَبْقَيْتَ وَجَعَلَهُ لَكَ طَهُوْرًا
+                \nTerimakasih atas kotak infaq dari Saudara/i :
+                \nNama : $kuitansi->nama
+                \nNominal : Rp. *". number_format ($kuitansi->nominal,0,',','.') . "*
+                \nTerbilang : $kuitansi->terbilang
+                \nKeperluan : $kuitansi->keperluan
+                \nDitarik oleh : $petugas
+                \nTanggal : $tanggal
+                \nKami Ucapkan jazakumullah khairan katsiran atas donasinya, semoga Allah membalas kebaikan saudara/i dengan balasan yang terbaik
+                \nAminnn...
+                ",
+            'countryCode' => '62', //optional
+        ),
+        CURLOPT_HTTPHEADER => array(
+            'Authorization: 611hGB#gKWFMymS8PRvN' //change TOKEN to your actual token
+        ),
+        CURLOPT_SSL_VERIFYHOST => 0,
+        CURLOPT_SSL_VERIFYPEER => 0,
+    ));
+
+    $response = curl_exec($curl);
+    if (curl_errno($curl)) {
+        $error_msg = curl_error($curl);
     }
+    curl_close($curl);
+
+    if (isset($error_msg)) {
+        echo $error_msg;
+    }
+    echo $response;
+       
     
+    // $pdf = PDF::loadView('kuitansi.thermal', compact('kuitansi'))->setPaper([0, 0, 328.8, 1683.6]); // 116mm x 594mm
+    // return $pdf->stream('kuitansi.pdf');
+    }
 
 }
