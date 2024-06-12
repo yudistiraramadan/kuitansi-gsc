@@ -55,7 +55,7 @@
 <body>
     <div class="kuitansi">
         <div class="header">
-            <img src="https://via.placeholder.com/50" alt="Logo">
+            {{-- <img src="https://via.placeholder.com/50" alt="Logo"> --}}
             <h2 style="font-size: 12px;">LAZ GERAK SEDEKAH CILACAP</h2>
             <p style="font-size: 10px;">Jalan Sulawesi, Perum Puri Tanjung Intan No.B2<br>Karang Lor, Gunungsimping,
                 Cilacap Tengah 53224</p>
