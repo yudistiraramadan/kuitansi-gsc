@@ -59,10 +59,12 @@ class LandingpageController extends Controller
             'nominalsKotakInfaq' => $nominalsKotakInfaq
         ];
 
+        // ============================================================================================================================
+        // Tabel Penarikan
         $kuitansis = Kuitansi::join('users', 'kuitansis.user_id', '=', 'users.id')
         ->orderBy('kuitansis.tanggal', 'desc')
-        ->get(['kuitansis.id', 'kuitansis.nominal', 'kuitansis.tanggal', 'kuitansis.jenis_donasi', 'users.nama'])
-        ->whereIn('jenis_donasi', ['Tabung Kebaikan', 'Kotak Infaq']);
+        ->get(['kuitansis.id', 'kuitansis.nominal', 'kuitansis.tanggal', 'kuitansis.jenis_donasi', 'users.nama']);
+        // ->whereIn('jenis_donasi', ['Tabung Kebaikan', 'Kotak Infaq']);
         // dd($kuitansis);
 
         // ============================================================================================================================

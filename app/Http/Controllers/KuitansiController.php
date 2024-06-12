@@ -198,8 +198,8 @@ class KuitansiController extends Controller
     echo $response;
        
     
-    // $pdf = PDF::loadView('kuitansi.thermal', compact('kuitansi'))->setPaper([0, 0, 328.8, 1683.6]); // 116mm x 594mm
-    // return $pdf->stream('kuitansi.pdf');
+    $pdf = PDF::loadView('kuitansi.thermal', compact('kuitansi'))->setPaper([0, 0, 328.8, 1683.6]); // 116mm x 594mm
+    return $pdf->stream('kuitansi.pdf');
     }
 
 }

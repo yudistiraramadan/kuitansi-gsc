@@ -387,7 +387,7 @@
                 2024 &copy; Gerak Sedekah Cilacap
             </div>
             <div class="credits">
-                Created By <a href="https://www.instagram.com/yudistira8404/" target="_blank">Yudistira RK</a>
+                Created with ❤️ by <a href="https://www.instagram.com/yudistira8404/" target="_blank">Yudistira RK</a>
             </div>
         </div>
     </footer><!-- End Footer -->
