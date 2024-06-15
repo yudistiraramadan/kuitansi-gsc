@@ -167,7 +167,7 @@ class KuitansiController extends Controller
             'message' => "Assalamualaikum Warahmatullahi Wabarakatuh,
                 \nKami ucapkan :
                 \nآجَرَكَ اللهُ فِيْمَا اَعْطَيْتَ، وَبَارَكَ فِيْمَا اَبْقَيْتَ وَجَعَلَهُ لَكَ طَهُوْرًا
-                \nTerimakasih atas kotak infaq dari Saudara/i :
+                \nTerimakasih atas donasi dari Saudara/i :
                 \nNama : $kuitansi->nama
                 \nNominal : Rp. *". number_format ($kuitansi->nominal,0,',','.') . "*
                 \nTerbilang : $kuitansi->terbilang
@@ -180,7 +180,7 @@ class KuitansiController extends Controller
             'countryCode' => '62', //optional
         ),
         CURLOPT_HTTPHEADER => array(
-            'Authorization: 611hGB#gKWFMymS8PRvN' //change TOKEN to your actual token
+            'Authorization: wXVL67p8@SDk!iWuDiWR' //change TOKEN to your actual token
         ),
         CURLOPT_SSL_VERIFYHOST => 0,
         CURLOPT_SSL_VERIFYPEER => 0,
